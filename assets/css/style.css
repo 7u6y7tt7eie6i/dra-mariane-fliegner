@@ -482,8 +482,8 @@ figure { margin: 0; }
    COMO FUNCIONA
    ══════════════════════════════════════════════════════════ */
 .funciona { background: radial-gradient(50% 70% at 0% 40%, rgba(185, 150, 217, .45), transparent 70%), var(--lilas-200); }
-.funciona__grade { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(40px, 7vw, 100px); align-items: center; }
-.funciona__foto { position: relative; isolation: isolate; max-width: 330px; width: 100%; margin: 0 auto; }
+.funciona__grade { display: grid; grid-template-columns: 1fr 1.2fr; gap: clamp(40px, 7vw, 100px); align-items: center; }
+.funciona__foto { position: relative; isolation: isolate; max-width: 430px; width: 100%; margin: 0 auto; }
 .funciona__foto img { width: 100%; aspect-ratio: 3 / 5; object-fit: cover; object-position: center 15%; border-radius: 200px 200px var(--raio) var(--raio); box-shadow: var(--sombra); border: 6px solid var(--branco); }
 .funciona__foto::before { content: ""; position: absolute; inset: 18px -18px -18px 18px; border: 1px solid var(--dourado); border-radius: 200px 200px var(--raio) var(--raio); z-index: -1; }
 
