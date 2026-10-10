@@ -551,7 +551,8 @@ figure { margin: 0; }
 .local__grade { display: grid; grid-template-columns: 1fr 1.25fr; gap: clamp(40px, 6vw, 72px); align-items: center; }
 .contatos { display: grid; gap: 22px; margin: 10px 0 34px; }
 .contatos li { display: flex; gap: 16px; align-items: flex-start; }
-.contatos__icone { flex: none; display: grid; place-items: center; width: 46px; height: 46px; border-radius: 50%; background: var(--roxo-700); color: var(--dourado-claro); }
+.contatos__icone { flex: none; display: grid; place-items: center; width: 46px; height: 46px; border-radius: 50%; background: var(--branco); border: 1.5px solid var(--dourado-claro); color: var(--roxo-700); box-shadow: 0 8px 20px -12px rgba(75, 31, 115, .5); }
+.contatos__icone svg { stroke-width: 2.2; }
 .contatos__icone svg { width: 22px; height: 22px; }
 .contatos strong { display: block; font-family: var(--serif); font-weight: 500; font-size: 18px; color: var(--roxo-700); }
 .contatos span, .contatos a { color: var(--texto-2); font-size: 15px; text-decoration: none; }
@@ -618,12 +619,13 @@ figure { margin: 0; }
 @media (max-width: 960px) {
   /* abas viram pílulas que deslizam para o lado */
   .vitrine { grid-template-columns: 1fr; gap: 18px; }
-  .vitrine__abas { flex-direction: row; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: var(--gutter); margin: 0 calc(var(--gutter) * -1); padding: 4px var(--gutter) 8px; scrollbar-width: none; }
-  .vitrine__abas::-webkit-scrollbar { display: none; }
-  .aba { flex: 0 0 auto; grid-template-columns: auto auto; padding: 10px 18px 10px 10px; border-radius: 999px; scroll-snap-align: start; }
+  /* abas em grade 2x2: todas visíveis, mesmo tamanho, sem rolar */
+  .vitrine__abas { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .aba { grid-template-columns: auto 1fr; gap: 10px; padding: 10px 12px 10px 10px; border-radius: 14px; min-height: 64px; }
   .aba__num { display: none; }
-  .aba__icone { width: 38px; height: 38px; }
-  .aba__txt strong { font-size: 16px; white-space: nowrap; }
+  .aba__icone { width: 36px; height: 36px; }
+  .aba__icone svg { width: 19px; height: 19px; }
+  .aba__txt strong { font-size: 14.5px; line-height: 1.2; }
   .aba__txt small { display: none; }
   .aba:hover, .aba[aria-selected="true"] { transform: none; }
   .vitrine__paineis { min-height: 0; }
@@ -731,10 +733,13 @@ figure { margin: 0; }
   .faixa-cta .botao { width: 100%; }
 
   /* como funciona: foto pequena de um lado, passos do outro */
-  .funciona__grade { grid-template-columns: 34% 1fr; gap: 14px; align-items: start; }
-  .funciona__foto { position: sticky; top: 84px; max-width: none; margin: 0; }
-  .funciona__foto img { aspect-ratio: 3 / 5.2; border-width: 3px; border-radius: 80px 80px 12px 12px; }
+  .funciona__grade { grid-template-columns: 36% 1fr; grid-template-areas: "cab cab" "foto passos"; gap: 16px 14px; align-items: stretch; }
+  .funciona__texto { display: contents; }
+  .funciona__texto > header { grid-area: cab; }
+  .funciona__foto { grid-area: foto; position: relative; max-width: none; margin: 0; display: flex; }
+  .funciona__foto img { height: 100%; aspect-ratio: auto; object-position: center 12%; border-width: 3px; border-radius: 80px 80px 12px 12px; }
   .funciona__foto::before { inset: 8px -6px -8px 6px; border-radius: 80px 80px 12px 12px; }
+  .passos { grid-area: passos; }
   .funciona .sobretitulo { font-size: 10px; letter-spacing: .2em; margin-bottom: 8px; }
   .funciona .sobretitulo::before { width: 16px; }
   .funciona .titulo { font-size: 23px; }
