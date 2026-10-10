@@ -487,6 +487,12 @@ figure { margin: 0; }
 .funciona__foto img { width: 100%; aspect-ratio: 3 / 5; object-fit: cover; object-position: center 15%; border-radius: 200px 200px var(--raio) var(--raio); box-shadow: var(--sombra); border: 6px solid var(--branco); }
 .funciona__foto::before { content: ""; position: absolute; inset: 18px -18px -18px 18px; border: 1px solid var(--dourado); border-radius: 200px 200px var(--raio) var(--raio); z-index: -1; }
 
+/* enfeites das laterais (só no computador) */
+.funciona { overflow: hidden; isolation: isolate; }
+.funciona__decor { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
+.funciona__script { position: absolute; z-index: -1; left: 2%; bottom: 6%; font-family: var(--script); font-size: clamp(90px, 10vw, 170px); line-height: 1; color: var(--dourado); opacity: .14; transform: rotate(-8deg); pointer-events: none; }
+.funciona__pontos { position: absolute; z-index: -1; right: 3%; top: 12%; width: 150px; height: 150px; border-radius: 50%; background: radial-gradient(circle, var(--roxo-500) 1.6px, transparent 2.2px) 0 0 / 18px 18px; opacity: .22; pointer-events: none; }
+
 .passos { display: grid; gap: 14px; margin-top: 10px; }
 .passo { display: flex; gap: 20px; align-items: flex-start; padding: 22px 24px; border-radius: var(--raio-sm); background: var(--branco); box-shadow: 0 10px 30px -22px rgba(75, 31, 115, .6); transition: transform .3s var(--ease); }
 .passo:hover { transform: translateX(4px); }
@@ -617,6 +623,7 @@ figure { margin: 0; }
 }
 
 @media (max-width: 960px) {
+  .funciona__decor, .funciona__script, .funciona__pontos { display: none; }
   /* abas viram pílulas que deslizam para o lado */
   .vitrine { grid-template-columns: 1fr; gap: 18px; }
   /* abas em grade 2x2: todas visíveis, mesmo tamanho, sem rolar */
