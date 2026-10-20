@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/style.css?v=9">
 </head>
 <body>
 
@@ -32,9 +32,11 @@
         <a href="#inicio">Início</a>
         <a href="#quem-somos">Quem somos</a>
         <a href="#tratamentos">Tratamentos</a>
+        <a href="#resultados">Resultados</a>
         <a href="#como-funciona">Como funciona</a>
         <a href="#duvidas">Dúvidas</a>
         <a href="#localizacao">Localização</a>
+        <a href="mentoria.html">Mentoria</a>
         <a href="https://wa.me/5545999354601?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o." class="botao botao--contorno menu__cta" target="_blank" rel="noopener">Agendar avaliação</a>
       </nav>
 
@@ -120,7 +122,7 @@
     <section class="secao quem" id="quem-somos">
       <div class="container quem__grade">
         <div class="quem__midia">
-          <div class="js-faixas" role="img" aria-label="Dra. Mariane Fliegner sorrindo em seu consultório" data-img="assets/img/dra-consultorio.jpg" data-tiras="8"></div>
+          <div class="js-faixas" role="img" aria-label="Retrato da Dra. Mariane Fliegner sorrindo, de jaleco e braços cruzados" data-img="assets/img/dra-retrato.jpg" data-tiras="8"></div>
           <div class="quem__selo" aria-hidden="true">
             <span class="quem__selo-num">+10</span>
             <span>anos de<br>experiência</span>
@@ -129,15 +131,16 @@
 
         <div class="quem__texto revelar">
           <p class="sobretitulo">Quem somos</p>
-          <h2 class="titulo">Muito prazer, sou a <em>Mariane Fliegner</em></h2>
+          <h2 class="titulo">Muito prazer, sou a <em class="js-cortina">Mariane Fliegner</em></h2>
           <p class="lead">Biomédica esteta, formada há mais de 10 anos e referência em secagem de vasinhos em Medianeira e região.</p>
-          <p>Meu propósito é ajudar mulheres a se sentirem bem com as próprias pernas. Por isso criei uma clínica dedicada a um único cuidado: tratar vasinhos com técnica, segurança e um atendimento acolhedor do início ao fim.</p>
+          <p>Sei como é deixar de usar short, saia ou biquíni por causa dos vasinhos. Meu propósito é devolver a vontade de mostrar as pernas. Por isso criei uma clínica dedicada a um único cuidado: tratar vasinhos com técnica, segurança e um atendimento acolhedor do início ao fim.</p>
           <ul class="checklist">
             <li>Clínica especializada em secagem de vasinhos</li>
-            <li>Avaliação individual antes de qualquer aplicação</li>
-            <li>Ambiente pensado para o seu conforto</li>
+            <li>Possibilidade de iniciar o tratamento no mesmo dia da avaliação</li>
+            <li>Protocolo CRIOPEIM, mais conforto na aplicação</li>
           </ul>
           <p class="assinatura">Mariane Fliegner</p>
+          <p class="registro">Biomédica esteta · CRBM-PR 1474</p>
         </div>
       </div>
     </section>
@@ -147,29 +150,30 @@
       <div class="container">
         <header class="cabecalho-secao revelar">
           <p class="sobretitulo sobretitulo--claro">Tratamentos</p>
-          <h2 class="titulo titulo--claro">Cuidado completo para as <em>suas pernas</em></h2>
+          <h2 class="titulo titulo--claro">Cuidado completo para as <em class="js-cortina">suas pernas</em></h2>
           <p class="cabecalho-secao__sub">Cada tratamento começa com uma avaliação para entender o seu caso e indicar o melhor caminho.</p>
         </header>
 
         <div class="vitrine revelar" data-intervalo="7000">
           <!-- lista de tratamentos (abas) -->
+          <div class="vitrine__lado">
           <div class="vitrine__abas" role="tablist" aria-label="Tratamentos">
-            <button class="aba" role="tab" id="aba-secagem" aria-controls="painel-secagem" aria-selected="true">
+            <button class="aba" role="tab" id="aba-vasinhos" aria-controls="painel-vasinhos" aria-selected="true">
               <span class="aba__num">01</span>
+              <span class="aba__icone" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="20" cy="20" r="12"/><path d="M29 29l13 13"/><path d="M14 20c2-3 4-1 6-3s3 2 6 0M15 24c3 0 4-2 7-1"/></svg></span>
+              <span class="aba__txt"><strong>Vasinhos e varicose</strong><small>Entenda o problema</small></span>
+              <span class="aba__barra" aria-hidden="true"></span>
+            </button>
+            <button class="aba" role="tab" id="aba-secagem" aria-controls="painel-secagem" aria-selected="false" tabindex="-1">
+              <span class="aba__num">02</span>
               <span class="aba__icone" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6c-2 8-1 14 2 20s3 12 0 16"/><path d="M28 6c1 6 4 10 6 16s1 14-3 20"/><path d="M21 18c3 1 5 3 6 6M22 30c2-1 4-1 6 1"/></svg></span>
               <span class="aba__txt"><strong>Secagem de vasinhos</strong><small>O mais procurado</small></span>
               <span class="aba__barra" aria-hidden="true"></span>
             </button>
             <button class="aba" role="tab" id="aba-criopeim" aria-controls="painel-criopeim" aria-selected="false" tabindex="-1">
-              <span class="aba__num">02</span>
-              <span class="aba__icone" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M24 4v40M6.7 14l34.6 20M6.7 34l34.6-20"/><path d="M19 7l5 4 5-4M19 41l5-4 5 4M6 20l6-1-2-6M42 28l-6 1 2 6M6 28l6 1-2 6M42 20l-6-1 2-6"/></svg></span>
-              <span class="aba__txt"><strong>Criopeim</strong><small>Pode fazer no verão</small></span>
-              <span class="aba__barra" aria-hidden="true"></span>
-            </button>
-            <button class="aba" role="tab" id="aba-microvasos" aria-controls="painel-microvasos" aria-selected="false" tabindex="-1">
               <span class="aba__num">03</span>
-              <span class="aba__icone" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="20" cy="20" r="12"/><path d="M29 29l13 13"/><path d="M14 20c2-3 4-1 6-3s3 2 6 0M15 24c3 0 4-2 7-1"/></svg></span>
-              <span class="aba__txt"><strong>Microvasos e varicoses</strong><small>Conforme o estágio</small></span>
+              <span class="aba__icone" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M24 4v40M6.7 14l34.6 20M6.7 34l34.6-20"/><path d="M19 7l5 4 5-4M19 41l5-4 5 4M6 20l6-1-2-6M42 28l-6 1 2 6M6 28l6 1-2 6M42 20l-6-1 2-6"/></svg></span>
+              <span class="aba__txt"><strong>Protocolo CRIOPEIM</strong><small>A evolução da secagem</small></span>
               <span class="aba__barra" aria-hidden="true"></span>
             </button>
             <button class="aba" role="tab" id="aba-avaliacao" aria-controls="painel-avaliacao" aria-selected="false" tabindex="-1">
@@ -179,11 +183,45 @@
               <span class="aba__barra" aria-hidden="true"></span>
             </button>
           </div>
+          <aside class="vitrine__destaque" aria-label="Por que tratar com a Dra. Mariane">
+            <p class="vitrine__destaque-script">Pernas lindas de novo</p>
+            <ul>
+              <li><strong>Comece no mesmo dia</strong>Possibilidade de iniciar o tratamento na consulta de avaliação</li>
+              <li><strong>Protocolo CRIOPEIM</strong>Glicose congelada e foco no conforto</li>
+              <li><strong>Biomédica esteta</strong>Dra. Mariane Fliegner · CRBM-PR 1474</li>
+              <li><strong>5,0 <span class="estrelas" aria-hidden="true">★★★★★</span></strong>196 avaliações no Google</li>
+            </ul>
+            <a class="botao botao--dourado js-elastico" href="https://wa.me/5545999354601?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">Agendar avaliação <span class="botao__seta" aria-hidden="true">→</span></a>
+          </aside>
+          </div>
 
           <!-- painéis -->
           <div class="vitrine__paineis">
-            <article class="painel ativo" role="tabpanel" id="painel-secagem" aria-labelledby="aba-secagem">
-              <div class="painel__foto"><img src="assets/img/pernas.jpg" alt="Perna com vasinhos finos aparentes" loading="lazy" width="340" height="590"></div>
+            <article class="painel ativo" role="tabpanel" id="painel-vasinhos" aria-labelledby="aba-vasinhos">
+              <div class="painel__foto"><img src="assets/img/vasinhos-detalhe.jpg?v=3" alt="Perna com vasinhos finos e arroxeados ao redor do joelho" loading="lazy" width="340" height="735"></div>
+              <div class="painel__texto">
+                <span class="painel__tag">Entenda o problema</span>
+                <h3>O que são vasinhos e varicoses?</h3>
+                <p>Vasinhos são pequenos vasos finos, vermelhos ou arroxeados, logo abaixo da pele. As varicoses são veias um pouco mais calibrosas e azuladas, que costumam alimentar os vasinhos. Não doem, mas tiram a vontade de mostrar as pernas.</p>
+                <p class="tipos__titulo">Aqui tratamos</p>
+                <ul class="tipos" aria-label="Tipos de vasinhos e varicoses que tratamos">
+                  <li><img src="assets/img/tipos/telangiectasias.jpg" alt="" loading="lazy" width="260" height="300"><span>Telangiectasias <small>vasinhos finos</small></span></li>
+                  <li><img src="assets/img/tipos/azulados.jpg" alt="" loading="lazy" width="260" height="300"><span>Vasinhos azulados</span></li>
+                  <li><img src="assets/img/tipos/mistos.jpg" alt="" loading="lazy" width="260" height="300"><span>Vasinhos mistos</span></li>
+                  <li><img src="assets/img/tipos/reticular.jpg" alt="" loading="lazy" width="260" height="300"><span>Varicose reticular</span></li>
+                  <li><img src="assets/img/tipos/rede.jpg" alt="" loading="lazy" width="260" height="300"><span>Varicose em rede</span></li>
+                  <li><img src="assets/img/tipos/isolados.jpg" alt="" loading="lazy" width="260" height="300"><span>Vasinhos isolados</span></li>
+                </ul>
+                <p class="aviso"><strong>Não tratamos varizes.</strong> Veias grossas, dilatadas e esverdeadas precisam de avaliação com médico cirurgião vascular.</p>
+                <a class="botao botao--dourado" href="https://wa.me/5545999354601?text=Ol%C3%A1!%20Tenho%20interesse%20na%20secagem%20de%20vasinhos." target="_blank" rel="noopener">Quero pernas bonitas <span class="botao__seta" aria-hidden="true">→</span></a>
+              </div>
+            </article>
+
+            <article class="painel" role="tabpanel" id="painel-secagem" aria-labelledby="aba-secagem" hidden>
+              <div class="painel__foto painel__foto--duo">
+                <figure class="painel__lado"><img src="assets/img/secagem-antes.jpg" alt="Coxa com vasinhos antes da secagem" loading="lazy" width="480" height="750"><figcaption>Antes</figcaption></figure>
+                <figure class="painel__lado"><img src="assets/img/secagem-depois.jpg" alt="A mesma coxa depois da secagem de vasinhos" loading="lazy" width="480" height="750"><figcaption>Depois</figcaption></figure>
+              </div>
               <div class="painel__texto">
                 <span class="painel__tag">O mais procurado</span>
                 <h3>Secagem de vasinhos</h3>
@@ -197,49 +235,49 @@
               </div>
             </article>
 
-            <article class="painel" role="tabpanel" id="painel-criopeim" aria-labelledby="aba-criopeim" hidden>
-              <div class="painel__foto"><img src="assets/img/dra-aplicacao.jpg" alt="Dra. Mariane realizando uma aplicação" loading="lazy" width="900" height="2370"></div>
+            <article class="painel painel--largo" role="tabpanel" id="painel-criopeim" aria-labelledby="aba-criopeim" hidden>
+              <div class="painel__faixa"><img src="assets/img/dra-criopeim.jpg" alt="Dra. Mariane ao lado do equipamento do protocolo CRIOPEIM no consultório" loading="lazy" width="1280" height="853"></div>
               <div class="painel__texto">
-                <span class="painel__tag">Pode fazer no verão</span>
-                <h3>Criopeim</h3>
-                <p>Técnica que associa o frio à aplicação. O resfriamento deixa a sessão muito mais confortável e permite tratar os vasinhos inclusive nos meses de calor.</p>
-                <ul class="painel__lista">
-                  <li>Mais conforto durante a aplicação</li>
-                  <li>Opção para quem quer tratar no verão</li>
-                  <li>Indicação confirmada na consulta de avaliação</li>
+                <span class="painel__tag">A evolução da secagem</span>
+                <h3>CRIOPEIM: a evolução da secagem tradicional</h3>
+                <div class="compara">
+                  <div class="compara__col">
+                    <h4>Secagem tradicional</h4>
+                    <ul>
+                      <li>Técnica convencional</li>
+                      <li>Cuidados pós-procedimento variam conforme o método</li>
+                    </ul>
+                  </div>
+                  <div class="compara__col compara__col--destaque">
+                    <h4>Protocolo CRIOPEIM</h4>
+                    <ul>
+                      <li>Glicose congelada</li>
+                      <li>Foco no conforto durante a aplicação</li>
+                      <li>Resultados que podem ser percebidos nos primeiros dias</li>
+                      <li>Recuperação prática, conforme orientação individual</li>
+                    </ul>
+                  </div>
+                </div>
+                <ul class="diferenciais">
+                  <li><strong>Conforto</strong>Atenção à experiência durante o procedimento.</li>
+                  <li><strong>Segurança</strong>Técnica, avaliação e cuidados individualizados.</li>
+                  <li><strong>Praticidade</strong>Recuperação compatível com a rotina.</li>
+                  <li><strong>Evolução visível</strong>Primeiros resultados em poucos dias.</li>
                 </ul>
-                <a class="botao botao--dourado" href="https://wa.me/5545999354601?text=Ol%C3%A1!%20Tenho%20interesse%20no%20Criopeim." target="_blank" rel="noopener">Quero saber do Criopeim <span class="botao__seta" aria-hidden="true">→</span></a>
-              </div>
-            </article>
-
-            <article class="painel" role="tabpanel" id="painel-microvasos" aria-labelledby="aba-microvasos" hidden>
-              <div class="painel__foto painel__foto--duo">
-                <img src="assets/img/estagio-2.jpg" alt="Perna com vasinhos agrupados" loading="lazy" width="170" height="385">
-                <img src="assets/img/estagio-3.jpg" alt="Perna com microvasos e varicoses junto aos vasinhos" loading="lazy" width="190" height="385">
-              </div>
-              <div class="painel__texto">
-                <span class="painel__tag">Conforme o estágio</span>
-                <h3>Microvasos e varicoses</h3>
-                <p>Quando os vasinhos se agrupam e aparecem veias nutridoras, o cuidado precisa ser planejado. O tratamento é indicado de acordo com o estágio identificado em cada perna.</p>
-                <ul class="painel__lista">
-                  <li>Microvasos, vasinhos agrupados e pequenas varicoses</li>
-                  <li>Plano feito a partir do estágio de cada caso</li>
-                  <li>Acompanhamento entre as sessões</li>
-                </ul>
-                <a class="botao botao--dourado" href="https://wa.me/5545999354601?text=Ol%C3%A1!%20Tenho%20interesse%20no%20tratamento%20de%20microvasos%20e%20varicoses." target="_blank" rel="noopener">Quero uma avaliação <span class="botao__seta" aria-hidden="true">→</span></a>
+                <a class="botao botao--dourado" href="https://wa.me/5545999354601?text=Ol%C3%A1!%20Tenho%20interesse%20no%20protocolo%20CRIOPEIM." target="_blank" rel="noopener">Quero o CRIOPEIM <span class="botao__seta" aria-hidden="true">→</span></a>
               </div>
             </article>
 
             <article class="painel" role="tabpanel" id="painel-avaliacao" aria-labelledby="aba-avaliacao" hidden>
-              <div class="painel__foto painel__foto--consultorio"><img src="assets/img/dra-consultorio.jpg" alt="Dra. Mariane no consultório" loading="lazy" width="790" height="535"></div>
+              <div class="painel__foto"><img src="assets/img/dra-aplicacao.jpg" alt="Dra. Mariane Fliegner no consultório" loading="lazy" width="900" height="2370"></div>
               <div class="painel__texto">
                 <span class="painel__tag">O primeiro passo</span>
                 <h3>Consulta de avaliação</h3>
-                <p>Antes de qualquer aplicação, a Dra. Mariane analisa as suas pernas com calma, identifica o estágio dos vasinhos e monta um plano feito para você.</p>
+                <p>A Dra. Mariane analisa as suas pernas com calma, identifica o tipo e o estágio dos vasinhos e indica o melhor tratamento para o seu caso.</p>
                 <ul class="painel__lista">
                   <li>Análise detalhada das pernas</li>
-                  <li>Identificação do estágio dos vasinhos</li>
-                  <li>Plano com técnica indicada e sessões estimadas</li>
+                  <li>Identificação do tipo e do estágio dos vasinhos</li>
+                  <li>Possibilidade de iniciar o tratamento no mesmo dia</li>
                 </ul>
                 <a class="botao botao--dourado" href="https://wa.me/5545999354601?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20consulta%20de%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">Agendar minha avaliação <span class="botao__seta" aria-hidden="true">→</span></a>
               </div>
@@ -254,30 +292,46 @@
       <div class="container">
         <header class="cabecalho-secao revelar">
           <p class="sobretitulo">Entenda a evolução</p>
-          <h2 class="titulo">Em qual estágio estão os <em>seus vasinhos?</em></h2>
+          <h2 class="titulo">Em qual estágio estão os <em class="js-cortina">seus vasinhos?</em></h2>
           <p class="cabecalho-secao__sub">Muitas mulheres acham que é “só um detalhe”, até perceberem que as pernas mudaram.</p>
         </header>
 
         <ol class="estagios">
           <li class="estagio revelar">
             <span class="estagio__rotulo">Estágio 1</span>
-            <img src="assets/img/estagio-1.jpg" alt="Perna com vasinhos finos e superficiais" loading="lazy" width="170" height="385">
+            <img src="assets/img/estagio-1.jpg?v=2" alt="Perna com vasinhos finos e superficiais" loading="lazy" width="285" height="595">
             <p>Vasinhos finos e superficiais.</p>
           </li>
           <li class="estagio revelar">
             <span class="estagio__rotulo">Estágio 2</span>
-            <img src="assets/img/estagio-2.jpg" alt="Perna com vasinhos mais visíveis e agrupados" loading="lazy" width="170" height="385">
+            <img src="assets/img/estagio-2.jpg?v=2" alt="Perna com vasinhos mais visíveis e agrupados" loading="lazy" width="285" height="595">
             <p>Vasinhos mais visíveis e agrupados.</p>
           </li>
           <li class="estagio revelar">
             <span class="estagio__rotulo">Estágio 3</span>
-            <img src="assets/img/estagio-3.jpg" alt="Perna com varizes e veias nutridoras junto aos vasinhos" loading="lazy" width="190" height="385">
+            <img src="assets/img/estagio-3.jpg?v=2" alt="Perna com varizes e veias nutridoras junto aos vasinhos" loading="lazy" width="285" height="595">
             <p>Varizes e veias nutridoras, junto com os vasinhos.</p>
           </li>
         </ol>
 
+        <div class="varizes revelar">
+          <div class="varizes__foto"><img src="assets/img/varizes.jpg?v=2" alt="Perna com varizes: veias grossas e dilatadas" loading="lazy" width="340" height="540"><span class="varizes__x" aria-hidden="true"></span></div>
+          <div class="varizes__texto">
+            <p class="varizes__nos">Nós</p>
+            <h3><strong>Não</strong> tratamos <span>varizes</span></h3>
+            <p class="varizes__def">Varizes são <b>veias grossas, dilatadas e esverdeadas</b>, diferentes dos vasinhos e das varicoses.</p>
+            <ul class="varizes__lista">
+              <li>Veias grossas e dilatadas</li>
+              <li>Aparecem esverdeadas</li>
+              <li>São de maior calibre</li>
+              <li>Precisam de avaliação e tratamento com médico cirurgião vascular</li>
+            </ul>
+            <p class="varizes__medico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3v6a4 4 0 0 0 8 0V3"/><path d="M9 13v2a5 5 0 0 0 10 0v-2"/><circle cx="19" cy="11" r="2"/></svg><span>Se você tem varizes, procure um <b>médico cirurgião vascular</b>.</span></p>
+          </div>
+        </div>
+
         <div class="faixa-cta revelar">
-          <p class="faixa-cta__script">Tratar cedo muda tudo!</p>
+          <p class="faixa-cta__script"><span class="js-cortina">Tratar cedo muda tudo!</span></p>
           <p class="faixa-cta__txt">Cuide das suas pernas antes que o problema evolua.</p>
           <a href="https://wa.me/5545999354601?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o." class="botao botao--roxo js-elastico" target="_blank" rel="noopener">
             Agendar avaliação <span class="botao__seta" aria-hidden="true">→</span>
@@ -304,7 +358,7 @@
         <div class="funciona__texto">
           <header class="revelar">
             <p class="sobretitulo">Como funciona</p>
-            <h2 class="titulo">Do primeiro contato ao <em>resultado</em></h2>
+            <h2 class="titulo">Do primeiro contato ao <em class="js-cortina">resultado</em></h2>
           </header>
 
           <ol class="passos">
@@ -319,21 +373,21 @@
               <span class="passo__num">2</span>
               <div>
                 <h3>Consulta de avaliação</h3>
-                <p>A Dra. Mariane analisa as suas pernas e identifica o estágio dos vasinhos.</p>
+                <p>A Dra. Mariane analisa as suas pernas e identifica o tipo e o estágio dos vasinhos. Se indicado, você já pode iniciar o tratamento no mesmo dia.</p>
               </div>
             </li>
             <li class="passo revelar">
               <span class="passo__num">3</span>
               <div>
-                <h3>Plano personalizado</h3>
-                <p>Você sai sabendo a técnica indicada, o número estimado de sessões e os cuidados.</p>
+                <h3>Sessões e acompanhamento</h3>
+                <p>Aplicações com o protocolo CRIOPEIM e acompanhamento a cada etapa.</p>
               </div>
             </li>
             <li class="passo revelar">
               <span class="passo__num">4</span>
               <div>
-                <h3>Sessões e acompanhamento</h3>
-                <p>Aplicações com acompanhamento a cada etapa, até pernas mais lindas e leves.</p>
+                <h3>Fotos finais e entrega de resultados</h3>
+                <p>Registramos o antes e o depois para você ver a evolução das suas pernas.</p>
               </div>
             </li>
           </ol>
@@ -341,31 +395,79 @@
       </div>
     </section>
 
+    <!-- ═══════════ RESULTADOS ═══════════ -->
+    <section class="secao resultados" id="resultados">
+      <div class="container">
+        <header class="cabecalho-secao revelar">
+          <p class="sobretitulo">Resultados reais</p>
+          <h2 class="titulo">Antes e depois com o <em class="js-cortina">CRIOPEIM</em></h2>
+          <p class="cabecalho-secao__sub">Casos de pacientes da clínica, publicados com autorização. Os resultados variam de pessoa para pessoa.</p>
+        </header>
+
+        <div class="galeria" data-mostrar="10">
+
+          <ul class="galeria__grade">
+            <li data-grupo="completo"><button class="galeria__item" type="button"><img src="assets/img/resultados/completo-01.jpg" alt="Antes e depois do tratamento completo de secagem de vasinhos com CRIOPEIM, caso 1" loading="lazy" width="1080" height="1350"></button></li>
+            <li data-grupo="completo"><button class="galeria__item" type="button"><img src="assets/img/resultados/completo-02.jpg" alt="Antes e depois do tratamento completo de secagem de vasinhos com CRIOPEIM, caso 2" loading="lazy" width="1080" height="1350"></button></li>
+            <li data-grupo="completo"><button class="galeria__item" type="button"><img src="assets/img/resultados/completo-03.jpg" alt="Antes e depois do tratamento completo de secagem de vasinhos com CRIOPEIM, caso 3" loading="lazy" width="1080" height="1350"></button></li>
+            <li data-grupo="completo"><button class="galeria__item" type="button"><img src="assets/img/resultados/completo-04.jpg" alt="Antes e depois do tratamento completo de secagem de vasinhos com CRIOPEIM, caso 4" loading="lazy" width="1080" height="1350"></button></li>
+            <li data-grupo="completo"><button class="galeria__item" type="button"><img src="assets/img/resultados/completo-05.jpg" alt="Antes e depois do tratamento completo de secagem de vasinhos com CRIOPEIM, caso 5" loading="lazy" width="1080" height="1350"></button></li>
+            <li data-grupo="completo"><button class="galeria__item" type="button"><img src="assets/img/resultados/completo-06.jpg" alt="Antes e depois do tratamento completo de secagem de vasinhos com CRIOPEIM, caso 6" loading="lazy" width="1080" height="1350"></button></li>
+            <li data-grupo="completo"><button class="galeria__item" type="button"><img src="assets/img/resultados/completo-07.jpg" alt="Antes e depois do tratamento completo de secagem de vasinhos com CRIOPEIM, caso 7" loading="lazy" width="1080" height="1350"></button></li>
+            <li data-grupo="completo"><button class="galeria__item" type="button"><img src="assets/img/resultados/completo-08.jpg" alt="Antes e depois do tratamento completo de secagem de vasinhos com CRIOPEIM, caso 8" loading="lazy" width="1080" height="1350"></button></li>
+            <li data-grupo="completo"><button class="galeria__item" type="button"><img src="assets/img/resultados/completo-09.jpg" alt="Antes e depois do tratamento completo de secagem de vasinhos com CRIOPEIM, caso 9" loading="lazy" width="1080" height="1350"></button></li>
+            <li data-grupo="completo"><button class="galeria__item" type="button"><img src="assets/img/resultados/completo-10.jpg" alt="Antes e depois do tratamento completo de secagem de vasinhos com CRIOPEIM, caso 10" loading="lazy" width="1080" height="1350"></button></li>
+            <li data-grupo="completo"><button class="galeria__item" type="button"><img src="assets/img/resultados/completo-11.jpg" alt="Antes e depois do tratamento completo de secagem de vasinhos com CRIOPEIM, caso 11" loading="lazy" width="1080" height="1350"></button></li>
+            <li data-grupo="completo"><button class="galeria__item" type="button"><img src="assets/img/resultados/completo-12.jpg" alt="Antes e depois do tratamento completo de secagem de vasinhos com CRIOPEIM, caso 12" loading="lazy" width="1080" height="1350"></button></li>
+            <li data-grupo="completo"><button class="galeria__item" type="button"><img src="assets/img/resultados/completo-13.jpg" alt="Antes e depois do tratamento completo de secagem de vasinhos com CRIOPEIM, caso 13" loading="lazy" width="1080" height="1350"></button></li>
+            <li data-grupo="completo"><button class="galeria__item" type="button"><img src="assets/img/resultados/completo-14.jpg" alt="Antes e depois do tratamento completo de secagem de vasinhos com CRIOPEIM, caso 14" loading="lazy" width="1080" height="1350"></button></li>
+            <li data-grupo="completo"><button class="galeria__item" type="button"><img src="assets/img/resultados/completo-15.jpg" alt="Antes e depois do tratamento completo de secagem de vasinhos com CRIOPEIM, caso 15" loading="lazy" width="1080" height="1350"></button></li>
+            <li data-grupo="completo"><button class="galeria__item" type="button"><img src="assets/img/resultados/completo-16.jpg" alt="Antes e depois do tratamento completo de secagem de vasinhos com CRIOPEIM, caso 16" loading="lazy" width="1080" height="1350"></button></li>
+            <li data-grupo="completo"><button class="galeria__item" type="button"><img src="assets/img/resultados/completo-17.jpg" alt="Antes e depois do tratamento completo de secagem de vasinhos com CRIOPEIM, caso 17" loading="lazy" width="1080" height="1350"></button></li>
+            <li data-grupo="completo"><button class="galeria__item" type="button"><img src="assets/img/resultados/completo-18.jpg" alt="Antes e depois do tratamento completo de secagem de vasinhos com CRIOPEIM, caso 18" loading="lazy" width="1080" height="1350"></button></li>
+            <li data-grupo="completo"><button class="galeria__item" type="button"><img src="assets/img/resultados/completo-19.jpg" alt="Antes e depois do tratamento completo de secagem de vasinhos com CRIOPEIM, caso 19" loading="lazy" width="1080" height="1350"></button></li>
+            <li data-grupo="completo"><button class="galeria__item" type="button"><img src="assets/img/resultados/completo-20.jpg" alt="Antes e depois do tratamento completo de secagem de vasinhos com CRIOPEIM, caso 20" loading="lazy" width="1080" height="1350"></button></li>
+          </ul>
+
+          <p class="galeria__mais"><button class="botao botao--contorno-roxo" type="button">Ver mais resultados</button></p>
+        </div>
+      </div>
+
+      <dialog class="lupa" aria-label="Foto de antes e depois ampliada">
+        <img class="lupa__img" src="" alt="">
+        <button class="lupa__fechar" type="button" aria-label="Fechar">×</button>
+        <button class="lupa__nav lupa__nav--ant" type="button" aria-label="Foto anterior">‹</button>
+        <button class="lupa__nav lupa__nav--prox" type="button" aria-label="Próxima foto">›</button>
+      </dialog>
+    </section>
+
     <!-- ═══════════ DEPOIMENTOS ═══════════ -->
     <section class="secao depoimentos" id="depoimentos">
       <div class="container">
         <header class="cabecalho-secao revelar">
           <p class="sobretitulo sobretitulo--claro">Histórias reais</p>
-          <h2 class="titulo titulo--claro">O que dizem as <em>nossas pacientes</em></h2>
+          <h2 class="titulo titulo--claro">O que dizem as <em class="js-cortina">nossas pacientes</em></h2>
           <p class="nota-google"><strong>5,0</strong> <span class="estrelas" aria-label="5 de 5 estrelas">★★★★★</span> 196 avaliações no Google</p>
         </header>
 
+        <div class="depos-esteira">
         <div class="depos">
-          <figure class="depo js-luz revelar">
+          <figure class="depo js-luz">
             <span class="estrelas" aria-hidden="true">★★★★★</span>
             <blockquote>“Em resumo, gostei de tudo: da Mari, do tratamento, do resultado e do espaço.”</blockquote>
             <figcaption><span class="depo__avatar" aria-hidden="true">L</span> Lola Castilho</figcaption>
           </figure>
-          <figure class="depo js-luz revelar">
+          <figure class="depo js-luz">
             <span class="estrelas" aria-hidden="true">★★★★★</span>
             <blockquote>“Já fiz a segunda aplicação, minhas pernas estão tão lindas! Obrigada, doutora Mariane.”</blockquote>
             <figcaption><span class="depo__avatar" aria-hidden="true">A</span> Adriana Stella Dias</figcaption>
           </figure>
-          <figure class="depo js-luz revelar">
+          <figure class="depo js-luz">
             <span class="estrelas" aria-hidden="true">★★★★★</span>
             <blockquote>“Atendimento nota 10, profissionalismo e ambiente super agradável.”</blockquote>
             <figcaption><span class="depo__avatar" aria-hidden="true">F</span> Fernanda Perin</figcaption>
           </figure>
+        </div>
         </div>
 
         <p class="depoimentos__mais revelar">
@@ -377,14 +479,15 @@
     <!-- ═══════════ DÚVIDAS ═══════════ -->
     <section class="secao duvidas" id="duvidas">
       <div class="container duvidas__grade">
-        <header class="revelar">
+        <header class="cabecalho-secao revelar">
           <p class="sobretitulo">Dúvidas frequentes</p>
-          <h2 class="titulo">Antes de tratar seus vasinhos, <em>você precisa saber disso</em></h2>
+          <h2 class="titulo">Antes de tratar seus vasinhos, <em class="js-cortina">você precisa saber disso</em></h2>
           <p class="cabecalho-secao__sub">Não encontrou sua resposta? Fale com a nossa equipe pelo WhatsApp.</p>
           <a href="https://wa.me/5545999354601?text=Ol%C3%A1!%20Tenho%20uma%20d%C3%BAvida%20sobre%20o%20tratamento." class="botao botao--contorno-roxo" target="_blank" rel="noopener">Tirar dúvida no WhatsApp</a>
         </header>
 
         <div class="faq">
+          <div class="faq__col">
           <details class="faq__item revelar" open>
             <summary>Vasinhos são só estética?</summary>
             <p>Nem sempre. Os vasinhos podem ser o primeiro sinal de alterações na circulação e tendem a evoluir com o tempo. Por isso a consulta de avaliação é o primeiro passo: ela identifica o estágio e indica o tratamento adequado.</p>
@@ -402,6 +505,24 @@
             <p>Depende do estágio e da quantidade de vasinhos. O número estimado de sessões é definido na consulta de avaliação, de forma individual.</p>
           </details>
           <details class="faq__item revelar">
+            <summary>Quais são os cuidados pós-procedimento?</summary>
+            <p>São cuidados simples, que você recebe por escrito no dia da aplicação: proteger a área tratada, evitar calor excessivo nas primeiras horas e seguir as orientações da Dra. Mariane para o seu caso.</p>
+          </details>
+          </div>
+          <div class="faq__col">
+          <details class="faq__item revelar">
+            <summary>Posso tomar sol depois da aplicação?</summary>
+            <p>O ideal é evitar sol direto na área tratada nos primeiros dias e usar protetor solar. Com o CRIOPEIM é possível tratar até no verão, e a Dra. Mariane orienta o tempo certo para o seu caso.</p>
+          </details>
+          <details class="faq__item revelar">
+            <summary>Posso ir para a academia?</summary>
+            <p>A rotina segue praticamente normal. Nas primeiras horas, evite exercícios intensos e de impacto para as pernas. Você recebe a liberação certinha na sessão.</p>
+          </details>
+          <details class="faq__item revelar">
+            <summary>Preciso usar meia de compressão?</summary>
+            <p>Depende do caso. Quando a meia de compressão é indicada, a Dra. Mariane explica o modelo e por quanto tempo usar.</p>
+          </details>
+          <details class="faq__item revelar">
             <summary>Como faço para agendar?</summary>
             <p>É só chamar no WhatsApp <a href="https://wa.me/5545999354601" target="_blank" rel="noopener">(45) 99935-4601</a>. Nossa equipe confirma o melhor horário para a sua consulta.</p>
           </details>
@@ -409,6 +530,7 @@
             <summary>Onde fica a clínica?</summary>
             <p>Dentro do Shopping Medianeira: Av. Brasília, 1420, sala 36, Centro, Medianeira-PR.</p>
           </details>
+          </div>
         </div>
       </div>
     </section>
@@ -418,7 +540,7 @@
       <div class="container local__grade">
         <div class="local__info revelar">
           <p class="sobretitulo">Localização</p>
-          <h2 class="titulo">Como chegar na <em>clínica</em></h2>
+          <h2 class="titulo">Como chegar na <em class="js-cortina">clínica</em></h2>
 
           <ul class="contatos">
             <li>
@@ -446,22 +568,6 @@
       </div>
     </section>
 
-    <!-- ═══════════ CTA FINAL ═══════════ -->
-    <section class="cta-final" id="agendar">
-      <div class="container cta-final__grade">
-        <div class="cta-final__conteudo revelar">
-          <p class="cta-final__script">Seu futuro agradece.</p>
-          <h2 class="titulo titulo--claro">Suas pernas <em>também!</em></h2>
-          <p>Agende sua avaliação especializada e descubra o melhor tratamento para os seus vasinhos.</p>
-          <a href="https://wa.me/5545999354601?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o." class="botao botao--dourado js-elastico" target="_blank" rel="noopener">
-            Começar agora <span class="botao__seta" aria-hidden="true">→</span>
-          </a>
-        </div>
-        <div class="cta-final__foto revelar">
-          <img src="assets/img/pernas.jpg" alt="Mão feminina sobre a perna com vasinhos aparentes" loading="lazy" width="340" height="590">
-        </div>
-      </div>
-    </section>
   </main>
 
   <!-- ═══════════ RODAPÉ ═══════════ -->
@@ -473,6 +579,7 @@
           <span class="logo__texto"><strong>Dra. Mariane Fliegner</strong><small>Clínica de Secagem de Vasinhos</small></span>
         </a>
         <p class="rodape__frase">Pernas lindas e saudáveis.</p>
+        <p>Dra. Mariane Fliegner · Biomédica esteta · CRBM-PR 1474</p>
       </div>
       <div>
         <h3>Contato</h3>
@@ -483,6 +590,7 @@
         <h3>Redes</h3>
         <p><a href="https://www.instagram.com/dramarianefliegner/" target="_blank" rel="noopener">Instagram · @dramarianefliegner</a></p>
         <p><a href="https://www.threads.net/@dramarianefliegner" target="_blank" rel="noopener">Threads · @dramarianefliegner</a></p>
+        <p><a href="mentoria.html">Mentoria CRIOPEIM para profissionais</a></p>
       </div>
     </div>
     <div class="container rodape__base">
@@ -495,7 +603,7 @@
     <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.6a10.6 10.6 0 0 1-5.4-1.5l-.4-.2-3.9 1 1-3.8-.2-.4A10.6 10.6 0 1 1 16 26.6zm5.8-7.9c-.3-.2-1.9-.9-2.2-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7 0a8.7 8.7 0 0 1-4.3-3.8c-.3-.6.3-.5.9-1.7.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.9.4 3.6 3.6 0 0 0-1.1 2.7 6.3 6.3 0 0 0 1.3 3.3 14.4 14.4 0 0 0 5.5 4.9c2 .9 2.8 1 3.9.8a3.3 3.3 0 0 0 2.1-1.5 2.7 2.7 0 0 0 .2-1.5c-.1-.2-.3-.3-.7-.5z"/></svg>
   </a>
 
-  <script src="assets/js/main.js"></script>
+  <script src="assets/js/main.js?v=9"></script>
 
   <!-- Vercel Web Analytics -->
   <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>

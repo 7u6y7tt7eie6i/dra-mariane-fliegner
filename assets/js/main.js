@@ -279,6 +279,92 @@
     }
   }
 
+  /* ── esteira de avaliações: repete os cartões até cobrir a tela e duplica
+        tudo, para a animação de -50% recomeçar sem emenda ───────────── */
+  function avaliacoes() {
+    var trilho = document.querySelector('.depos');
+    if (!trilho) return;
+    var originais = [].slice.call(trilho.children);
+    var largura = function () { return trilho.scrollWidth; };
+    var voltas = 0;
+    while (largura() < window.innerWidth && voltas++ < 10) {
+      originais.forEach(function (c) { trilho.appendChild(c.cloneNode(true)); });
+    }
+    [].slice.call(trilho.children).forEach(function (c) {
+      var copia = c.cloneNode(true);
+      copia.setAttribute('aria-hidden', 'true');
+      trilho.appendChild(copia);
+    });
+    /* velocidade constante, qualquer que seja a quantidade de cartões */
+    trilho.style.setProperty('--duracao', (trilho.children.length / 2) * 7 + 's');
+  }
+
+  /* ── galeria de antes e depois: ver mais e foto ampliada ── */
+  function galeria() {
+    var raiz = document.querySelector('.galeria');
+    if (!raiz) return;
+    var itens = [].slice.call(raiz.querySelectorAll('.galeria__grade li'));
+    var mais = raiz.querySelector('.galeria__mais');
+    var limite = parseInt(raiz.dataset.mostrar, 10) || 10;
+    var tudo = false;
+
+    function visiveis() { return itens.filter(function (li) { return !li.hidden; }); }
+
+    function aplicar() {
+      itens.forEach(function (li, i) { li.hidden = !tudo && i >= limite; });
+      mais.hidden = tudo || itens.length <= limite;
+    }
+
+    mais.querySelector('button').addEventListener('click', function () { tudo = true; aplicar(); });
+    aplicar();
+
+    var lupa = document.querySelector('.lupa');
+    if (!lupa || typeof lupa.showModal !== 'function') return;
+    var foto = lupa.querySelector('.lupa__img');
+    var atual = 0;
+    function abrir(i) {
+      var lista = visiveis();
+      atual = (i + lista.length) % lista.length;
+      var img = lista[atual].querySelector('img');
+      foto.src = img.src; foto.alt = img.alt;
+      if (!lupa.open) lupa.showModal();
+    }
+    itens.forEach(function (li) {
+      li.querySelector('button').addEventListener('click', function () { abrir(visiveis().indexOf(li)); });
+    });
+    lupa.querySelector('.lupa__fechar').addEventListener('click', function () { lupa.close(); });
+    lupa.querySelector('.lupa__nav--ant').addEventListener('click', function () { abrir(atual - 1); });
+    lupa.querySelector('.lupa__nav--prox').addEventListener('click', function () { abrir(atual + 1); });
+    lupa.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft') abrir(atual - 1);
+      else if (e.key === 'ArrowRight') abrir(atual + 1);
+    });
+    /* clique fora da foto fecha */
+    lupa.addEventListener('click', function (e) { if (e.target === lupa) lupa.close(); });
+  }
+
+  /* ══════════════════════════════════════════════════════
+     21 · CORTINA QUE REVELA (palavras de destaque)
+     Uma faixa dourada passa e descobre o texto, uma vez,
+     quando ele aparece na tela.
+     ══════════════════════════════════════════════════════ */
+  FX.j21 = function (raiz) {
+    var alvos = raiz.querySelectorAll('.js-cortina');
+    alvos.forEach(function (el) { el.innerHTML = '<span class="js-cortina__txt">' + el.innerHTML + '</span>'; });
+    if (semMovimento || !('IntersectionObserver' in window)) {
+      alvos.forEach(function (el) { el.classList.add('run'); });
+      return;
+    }
+    var obs = new IntersectionObserver(function (itens) {
+      itens.forEach(function (it) {
+        if (!it.isIntersecting) return;
+        it.target.classList.add('run');
+        obs.unobserve(it.target);
+      });
+    }, { threshold: 0.6 });
+    alvos.forEach(function (el) { obs.observe(el); });
+  };
+
   /* ── revelar seções ao rolar ─────────────────────────── */
   function revelar() {
     var itens = document.querySelectorAll('.revelar');
@@ -305,7 +391,25 @@
     var botao = document.getElementById('hamburguer');
     var menu = document.getElementById('menu');
 
-    function aoRolarTopo() { topo.classList.toggle('rolou', window.scrollY > 40); }
+    /* sublinha no menu a seção que está na tela */
+    var marcadores = [].slice.call(menu.querySelectorAll('a[href^="#"]:not(.botao)'))
+      .map(function (a) { return { link: a, secao: document.getElementById(a.getAttribute('href').slice(1)) }; })
+      .filter(function (m) { return m.secao; });
+    function marcarSecao() {
+      var linha = topo.offsetHeight + 40, atual = null;
+      marcadores.forEach(function (m) { if (m.secao.getBoundingClientRect().top <= linha) atual = atual && atual.secao.offsetTop > m.secao.offsetTop ? atual : m; });
+      /* chegou ao fim da página: marca a última seção do menu */
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) {
+        atual = marcadores.reduce(function (a, m) { return !a || m.secao.offsetTop > a.secao.offsetTop ? m : a; }, null);
+      }
+      marcadores.forEach(function (m) {
+        var sel = m === atual;
+        m.link.classList.toggle('ativo', sel);
+        if (sel) m.link.setAttribute('aria-current', 'true'); else m.link.removeAttribute('aria-current');
+      });
+    }
+
+    function aoRolarTopo() { topo.classList.toggle('rolou', window.scrollY > 40); marcarSecao(); }
     window.addEventListener('scroll', aoRolarTopo, { passive: true });
     aoRolarTopo();
 
@@ -326,8 +430,12 @@
   FX.j14(document);
   FX.j06(document);
   FX.j12(document);
+  FX.j21(document);
   esteira();
   vitrine();
+  avaliacoes();
+  galeria();
+  FX.j12(document.querySelector('.depos') || document);
   revelar();
 
   var ano = document.getElementById('ano');
