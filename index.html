@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=9">
+  <link rel="stylesheet" href="assets/css/style.css?v=12">
 </head>
 <body>
 
@@ -176,12 +176,6 @@
               <span class="aba__txt"><strong>Protocolo CRIOPEIM</strong><small>A evolução da secagem</small></span>
               <span class="aba__barra" aria-hidden="true"></span>
             </button>
-            <button class="aba" role="tab" id="aba-avaliacao" aria-controls="painel-avaliacao" aria-selected="false" tabindex="-1">
-              <span class="aba__num">04</span>
-              <span class="aba__icone" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="10" y="8" width="28" height="34" rx="3"/><path d="M18 8V5h12v3"/><path d="M16 20l3 3 5-5M16 32l3 3 5-5M28 21h5M28 33h5"/></svg></span>
-              <span class="aba__txt"><strong>Consulta de avaliação</strong><small>O primeiro passo</small></span>
-              <span class="aba__barra" aria-hidden="true"></span>
-            </button>
           </div>
           <aside class="vitrine__destaque" aria-label="Por que tratar com a Dra. Mariane">
             <p class="vitrine__destaque-script">Pernas lindas de novo</p>
@@ -198,7 +192,7 @@
           <!-- painéis -->
           <div class="vitrine__paineis">
             <article class="painel ativo" role="tabpanel" id="painel-vasinhos" aria-labelledby="aba-vasinhos">
-              <div class="painel__foto"><img src="assets/img/vasinhos-detalhe.jpg?v=3" alt="Perna com vasinhos finos e arroxeados ao redor do joelho" loading="lazy" width="340" height="735"></div>
+              <div class="painel__foto painel__foto--vasinhos"><picture><source media="(max-width: 720px)" srcset="assets/img/vasinhos-largo.jpg"><img src="assets/img/vasinhos-detalhe.jpg?v=3" alt="Perna com vasinhos finos e arroxeados ao redor do joelho" loading="lazy" width="340" height="735"></picture></div>
               <div class="painel__texto">
                 <span class="painel__tag">Entenda o problema</span>
                 <h3>O que são vasinhos e varicoses?</h3>
@@ -267,21 +261,6 @@
                 <a class="botao botao--dourado" href="https://wa.me/5545999354601?text=Ol%C3%A1!%20Tenho%20interesse%20no%20protocolo%20CRIOPEIM." target="_blank" rel="noopener">Quero o CRIOPEIM <span class="botao__seta" aria-hidden="true">→</span></a>
               </div>
             </article>
-
-            <article class="painel" role="tabpanel" id="painel-avaliacao" aria-labelledby="aba-avaliacao" hidden>
-              <div class="painel__foto"><img src="assets/img/dra-aplicacao.jpg" alt="Dra. Mariane Fliegner no consultório" loading="lazy" width="900" height="2370"></div>
-              <div class="painel__texto">
-                <span class="painel__tag">O primeiro passo</span>
-                <h3>Consulta de avaliação</h3>
-                <p>A Dra. Mariane analisa as suas pernas com calma, identifica o tipo e o estágio dos vasinhos e indica o melhor tratamento para o seu caso.</p>
-                <ul class="painel__lista">
-                  <li>Análise detalhada das pernas</li>
-                  <li>Identificação do tipo e do estágio dos vasinhos</li>
-                  <li>Possibilidade de iniciar o tratamento no mesmo dia</li>
-                </ul>
-                <a class="botao botao--dourado" href="https://wa.me/5545999354601?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20consulta%20de%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">Agendar minha avaliação <span class="botao__seta" aria-hidden="true">→</span></a>
-              </div>
-            </article>
           </div>
         </div>
       </div>
@@ -289,6 +268,14 @@
 
     <!-- ═══════════ EVOLUÇÃO ═══════════ -->
     <section class="secao evolucao" id="evolucao">
+      <svg class="evolucao__decor" viewBox="0 0 1440 900" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M-40 160 C 160 80, 260 320, 140 470 S 60 800, 300 940" fill="none" stroke="#c9a46a" stroke-width="1.2" opacity=".5"/>
+        <path d="M-40 250 C 100 200, 170 360, 70 500" fill="none" stroke="#c9a46a" stroke-width="1" opacity=".3"/>
+        <path d="M1480 120 C 1290 200, 1420 400, 1320 520 S 1250 820, 1480 900" fill="none" stroke="#c9a46a" stroke-width="1.2" opacity=".5"/>
+        <path d="M1480 220 C 1380 280, 1440 420, 1380 500" fill="none" stroke="#c9a46a" stroke-width="1" opacity=".3"/>
+      </svg>
+      <span class="evolucao__script" aria-hidden="true">evolução</span>
+      <span class="evolucao__pontos" aria-hidden="true"></span>
       <div class="container">
         <header class="cabecalho-secao revelar">
           <p class="sobretitulo">Entenda a evolução</p>
@@ -299,16 +286,19 @@
         <ol class="estagios">
           <li class="estagio revelar">
             <span class="estagio__rotulo">Estágio 1</span>
+            <span class="estagio__nivel" aria-label="Intensidade: leve"><i></i><i class="vazio"></i><i class="vazio"></i>Leve</span>
             <img src="assets/img/estagio-1.jpg?v=2" alt="Perna com vasinhos finos e superficiais" loading="lazy" width="285" height="595">
             <p>Vasinhos finos e superficiais.</p>
           </li>
           <li class="estagio revelar">
             <span class="estagio__rotulo">Estágio 2</span>
+            <span class="estagio__nivel" aria-label="Intensidade: moderado"><i></i><i></i><i class="vazio"></i>Moderado</span>
             <img src="assets/img/estagio-2.jpg?v=2" alt="Perna com vasinhos mais visíveis e agrupados" loading="lazy" width="285" height="595">
             <p>Vasinhos mais visíveis e agrupados.</p>
           </li>
           <li class="estagio revelar">
             <span class="estagio__rotulo">Estágio 3</span>
+            <span class="estagio__nivel" aria-label="Intensidade: avançado"><i></i><i></i><i></i>Avançado</span>
             <img src="assets/img/estagio-3.jpg?v=2" alt="Perna com varizes e veias nutridoras junto aos vasinhos" loading="lazy" width="285" height="595">
             <p>Varizes e veias nutridoras, junto com os vasinhos.</p>
           </li>
@@ -391,6 +381,13 @@
               </div>
             </li>
           </ol>
+
+          <div class="funciona__acao revelar">
+            <a href="https://wa.me/5545999354601?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20consulta%20de%20avalia%C3%A7%C3%A3o." class="botao botao--roxo js-elastico" target="_blank" rel="noopener">
+              Agendar consulta <span class="botao__seta" aria-hidden="true">→</span>
+            </a>
+            <p>Possibilidade de iniciar o tratamento no mesmo dia</p>
+          </div>
         </div>
       </div>
     </section>
@@ -407,26 +404,26 @@
         <div class="galeria" data-mostrar="10">
 
           <ul class="galeria__grade">
-            <li data-grupo="completo"><button class="galeria__item" type="button"><img src="assets/img/resultados/completo-01.jpg" alt="Antes e depois do tratamento completo de secagem de vasinhos com CRIOPEIM, caso 1" loading="lazy" width="1080" height="1350"></button></li>
-            <li data-grupo="completo"><button class="galeria__item" type="button"><img src="assets/img/resultados/completo-02.jpg" alt="Antes e depois do tratamento completo de secagem de vasinhos com CRIOPEIM, caso 2" loading="lazy" width="1080" height="1350"></button></li>
-            <li data-grupo="completo"><button class="galeria__item" type="button"><img src="assets/img/resultados/completo-03.jpg" alt="Antes e depois do tratamento completo de secagem de vasinhos com CRIOPEIM, caso 3" loading="lazy" width="1080" height="1350"></button></li>
-            <li data-grupo="completo"><button class="galeria__item" type="button"><img src="assets/img/resultados/completo-04.jpg" alt="Antes e depois do tratamento completo de secagem de vasinhos com CRIOPEIM, caso 4" loading="lazy" width="1080" height="1350"></button></li>
-            <li data-grupo="completo"><button class="galeria__item" type="button"><img src="assets/img/resultados/completo-05.jpg" alt="Antes e depois do tratamento completo de secagem de vasinhos com CRIOPEIM, caso 5" loading="lazy" width="1080" height="1350"></button></li>
-            <li data-grupo="completo"><button class="galeria__item" type="button"><img src="assets/img/resultados/completo-06.jpg" alt="Antes e depois do tratamento completo de secagem de vasinhos com CRIOPEIM, caso 6" loading="lazy" width="1080" height="1350"></button></li>
-            <li data-grupo="completo"><button class="galeria__item" type="button"><img src="assets/img/resultados/completo-07.jpg" alt="Antes e depois do tratamento completo de secagem de vasinhos com CRIOPEIM, caso 7" loading="lazy" width="1080" height="1350"></button></li>
-            <li data-grupo="completo"><button class="galeria__item" type="button"><img src="assets/img/resultados/completo-08.jpg" alt="Antes e depois do tratamento completo de secagem de vasinhos com CRIOPEIM, caso 8" loading="lazy" width="1080" height="1350"></button></li>
-            <li data-grupo="completo"><button class="galeria__item" type="button"><img src="assets/img/resultados/completo-09.jpg" alt="Antes e depois do tratamento completo de secagem de vasinhos com CRIOPEIM, caso 9" loading="lazy" width="1080" height="1350"></button></li>
-            <li data-grupo="completo"><button class="galeria__item" type="button"><img src="assets/img/resultados/completo-10.jpg" alt="Antes e depois do tratamento completo de secagem de vasinhos com CRIOPEIM, caso 10" loading="lazy" width="1080" height="1350"></button></li>
-            <li data-grupo="completo"><button class="galeria__item" type="button"><img src="assets/img/resultados/completo-11.jpg" alt="Antes e depois do tratamento completo de secagem de vasinhos com CRIOPEIM, caso 11" loading="lazy" width="1080" height="1350"></button></li>
-            <li data-grupo="completo"><button class="galeria__item" type="button"><img src="assets/img/resultados/completo-12.jpg" alt="Antes e depois do tratamento completo de secagem de vasinhos com CRIOPEIM, caso 12" loading="lazy" width="1080" height="1350"></button></li>
-            <li data-grupo="completo"><button class="galeria__item" type="button"><img src="assets/img/resultados/completo-13.jpg" alt="Antes e depois do tratamento completo de secagem de vasinhos com CRIOPEIM, caso 13" loading="lazy" width="1080" height="1350"></button></li>
-            <li data-grupo="completo"><button class="galeria__item" type="button"><img src="assets/img/resultados/completo-14.jpg" alt="Antes e depois do tratamento completo de secagem de vasinhos com CRIOPEIM, caso 14" loading="lazy" width="1080" height="1350"></button></li>
-            <li data-grupo="completo"><button class="galeria__item" type="button"><img src="assets/img/resultados/completo-15.jpg" alt="Antes e depois do tratamento completo de secagem de vasinhos com CRIOPEIM, caso 15" loading="lazy" width="1080" height="1350"></button></li>
-            <li data-grupo="completo"><button class="galeria__item" type="button"><img src="assets/img/resultados/completo-16.jpg" alt="Antes e depois do tratamento completo de secagem de vasinhos com CRIOPEIM, caso 16" loading="lazy" width="1080" height="1350"></button></li>
-            <li data-grupo="completo"><button class="galeria__item" type="button"><img src="assets/img/resultados/completo-17.jpg" alt="Antes e depois do tratamento completo de secagem de vasinhos com CRIOPEIM, caso 17" loading="lazy" width="1080" height="1350"></button></li>
-            <li data-grupo="completo"><button class="galeria__item" type="button"><img src="assets/img/resultados/completo-18.jpg" alt="Antes e depois do tratamento completo de secagem de vasinhos com CRIOPEIM, caso 18" loading="lazy" width="1080" height="1350"></button></li>
-            <li data-grupo="completo"><button class="galeria__item" type="button"><img src="assets/img/resultados/completo-19.jpg" alt="Antes e depois do tratamento completo de secagem de vasinhos com CRIOPEIM, caso 19" loading="lazy" width="1080" height="1350"></button></li>
-            <li data-grupo="completo"><button class="galeria__item" type="button"><img src="assets/img/resultados/completo-20.jpg" alt="Antes e depois do tratamento completo de secagem de vasinhos com CRIOPEIM, caso 20" loading="lazy" width="1080" height="1350"></button></li>
+            <li data-grupo="completo"><button class="galeria__item" type="button"><img src="assets/img/resultados/mini/completo-01.jpg" data-full="assets/img/resultados/completo-01.jpg" alt="Antes e depois do tratamento completo de secagem de vasinhos com CRIOPEIM, caso 1" loading="lazy" width="480" height="600" decoding="async"></button></li>
+            <li data-grupo="completo"><button class="galeria__item" type="button"><img src="assets/img/resultados/mini/completo-02.jpg" data-full="assets/img/resultados/completo-02.jpg" alt="Antes e depois do tratamento completo de secagem de vasinhos com CRIOPEIM, caso 2" loading="lazy" width="480" height="600" decoding="async"></button></li>
+            <li data-grupo="completo"><button class="galeria__item" type="button"><img src="assets/img/resultados/mini/completo-03.jpg" data-full="assets/img/resultados/completo-03.jpg" alt="Antes e depois do tratamento completo de secagem de vasinhos com CRIOPEIM, caso 3" loading="lazy" width="480" height="600" decoding="async"></button></li>
+            <li data-grupo="completo"><button class="galeria__item" type="button"><img src="assets/img/resultados/mini/completo-04.jpg" data-full="assets/img/resultados/completo-04.jpg" alt="Antes e depois do tratamento completo de secagem de vasinhos com CRIOPEIM, caso 4" loading="lazy" width="480" height="600" decoding="async"></button></li>
+            <li data-grupo="completo"><button class="galeria__item" type="button"><img src="assets/img/resultados/mini/completo-05.jpg" data-full="assets/img/resultados/completo-05.jpg" alt="Antes e depois do tratamento completo de secagem de vasinhos com CRIOPEIM, caso 5" loading="lazy" width="480" height="600" decoding="async"></button></li>
+            <li data-grupo="completo"><button class="galeria__item" type="button"><img src="assets/img/resultados/mini/completo-06.jpg" data-full="assets/img/resultados/completo-06.jpg" alt="Antes e depois do tratamento completo de secagem de vasinhos com CRIOPEIM, caso 6" loading="lazy" width="480" height="600" decoding="async"></button></li>
+            <li data-grupo="completo"><button class="galeria__item" type="button"><img src="assets/img/resultados/mini/completo-07.jpg" data-full="assets/img/resultados/completo-07.jpg" alt="Antes e depois do tratamento completo de secagem de vasinhos com CRIOPEIM, caso 7" loading="lazy" width="480" height="600" decoding="async"></button></li>
+            <li data-grupo="completo"><button class="galeria__item" type="button"><img src="assets/img/resultados/mini/completo-08.jpg" data-full="assets/img/resultados/completo-08.jpg" alt="Antes e depois do tratamento completo de secagem de vasinhos com CRIOPEIM, caso 8" loading="lazy" width="480" height="600" decoding="async"></button></li>
+            <li data-grupo="completo"><button class="galeria__item" type="button"><img src="assets/img/resultados/mini/completo-09.jpg" data-full="assets/img/resultados/completo-09.jpg" alt="Antes e depois do tratamento completo de secagem de vasinhos com CRIOPEIM, caso 9" loading="lazy" width="480" height="600" decoding="async"></button></li>
+            <li data-grupo="completo"><button class="galeria__item" type="button"><img src="assets/img/resultados/mini/completo-10.jpg" data-full="assets/img/resultados/completo-10.jpg" alt="Antes e depois do tratamento completo de secagem de vasinhos com CRIOPEIM, caso 10" loading="lazy" width="480" height="600" decoding="async"></button></li>
+            <li data-grupo="completo"><button class="galeria__item" type="button"><img src="assets/img/resultados/mini/completo-11.jpg" data-full="assets/img/resultados/completo-11.jpg" alt="Antes e depois do tratamento completo de secagem de vasinhos com CRIOPEIM, caso 11" loading="lazy" width="480" height="600" decoding="async"></button></li>
+            <li data-grupo="completo"><button class="galeria__item" type="button"><img src="assets/img/resultados/mini/completo-12.jpg" data-full="assets/img/resultados/completo-12.jpg" alt="Antes e depois do tratamento completo de secagem de vasinhos com CRIOPEIM, caso 12" loading="lazy" width="480" height="600" decoding="async"></button></li>
+            <li data-grupo="completo"><button class="galeria__item" type="button"><img src="assets/img/resultados/mini/completo-13.jpg" data-full="assets/img/resultados/completo-13.jpg" alt="Antes e depois do tratamento completo de secagem de vasinhos com CRIOPEIM, caso 13" loading="lazy" width="480" height="600" decoding="async"></button></li>
+            <li data-grupo="completo"><button class="galeria__item" type="button"><img src="assets/img/resultados/mini/completo-14.jpg" data-full="assets/img/resultados/completo-14.jpg" alt="Antes e depois do tratamento completo de secagem de vasinhos com CRIOPEIM, caso 14" loading="lazy" width="480" height="600" decoding="async"></button></li>
+            <li data-grupo="completo"><button class="galeria__item" type="button"><img src="assets/img/resultados/mini/completo-15.jpg" data-full="assets/img/resultados/completo-15.jpg" alt="Antes e depois do tratamento completo de secagem de vasinhos com CRIOPEIM, caso 15" loading="lazy" width="480" height="600" decoding="async"></button></li>
+            <li data-grupo="completo"><button class="galeria__item" type="button"><img src="assets/img/resultados/mini/completo-16.jpg" data-full="assets/img/resultados/completo-16.jpg" alt="Antes e depois do tratamento completo de secagem de vasinhos com CRIOPEIM, caso 16" loading="lazy" width="480" height="600" decoding="async"></button></li>
+            <li data-grupo="completo"><button class="galeria__item" type="button"><img src="assets/img/resultados/mini/completo-17.jpg" data-full="assets/img/resultados/completo-17.jpg" alt="Antes e depois do tratamento completo de secagem de vasinhos com CRIOPEIM, caso 17" loading="lazy" width="480" height="600" decoding="async"></button></li>
+            <li data-grupo="completo"><button class="galeria__item" type="button"><img src="assets/img/resultados/mini/completo-18.jpg" data-full="assets/img/resultados/completo-18.jpg" alt="Antes e depois do tratamento completo de secagem de vasinhos com CRIOPEIM, caso 18" loading="lazy" width="480" height="600" decoding="async"></button></li>
+            <li data-grupo="completo"><button class="galeria__item" type="button"><img src="assets/img/resultados/mini/completo-19.jpg" data-full="assets/img/resultados/completo-19.jpg" alt="Antes e depois do tratamento completo de secagem de vasinhos com CRIOPEIM, caso 19" loading="lazy" width="480" height="600" decoding="async"></button></li>
+            <li data-grupo="completo"><button class="galeria__item" type="button"><img src="assets/img/resultados/mini/completo-20.jpg" data-full="assets/img/resultados/completo-20.jpg" alt="Antes e depois do tratamento completo de secagem de vasinhos com CRIOPEIM, caso 20" loading="lazy" width="480" height="600" decoding="async"></button></li>
           </ul>
 
           <p class="galeria__mais"><button class="botao botao--contorno-roxo" type="button">Ver mais resultados</button></p>
@@ -603,7 +600,7 @@
     <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.6a10.6 10.6 0 0 1-5.4-1.5l-.4-.2-3.9 1 1-3.8-.2-.4A10.6 10.6 0 1 1 16 26.6zm5.8-7.9c-.3-.2-1.9-.9-2.2-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7 0a8.7 8.7 0 0 1-4.3-3.8c-.3-.6.3-.5.9-1.7.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.9.4 3.6 3.6 0 0 0-1.1 2.7 6.3 6.3 0 0 0 1.3 3.3 14.4 14.4 0 0 0 5.5 4.9c2 .9 2.8 1 3.9.8a3.3 3.3 0 0 0 2.1-1.5 2.7 2.7 0 0 0 .2-1.5c-.1-.2-.3-.3-.7-.5z"/></svg>
   </a>
 
-  <script src="assets/js/main.js?v=9"></script>
+  <script src="assets/js/main.js?v=12"></script>
 
   <!-- Vercel Web Analytics -->
   <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>

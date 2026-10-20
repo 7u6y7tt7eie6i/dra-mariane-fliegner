@@ -333,6 +333,8 @@ figure { margin: 0; }
 .esteira::after { right: 0; background: linear-gradient(-90deg, var(--roxo-600), transparent); }
 .esteira__trilho { display: flex; width: max-content; animation: esteira 38s linear infinite; }
 .esteira:hover .esteira__trilho { animation-play-state: paused; }
+/* fora da tela, as esteiras param de animar e poupam o processador */
+.fora-da-tela .esteira__trilho, .fora-da-tela .depos, .fora-da-tela .esteira__sep { animation-play-state: paused !important; }
 @keyframes esteira { to { transform: translateX(-50%); } }
 .esteira__grupo { display: flex; align-items: center; flex: none; }
 .esteira__sep { color: var(--dourado-claro); font-size: 18px; margin: 0 clamp(28px, 4vw, 56px); opacity: .8; animation: girar 6s linear infinite; display: inline-block; }
@@ -536,19 +538,39 @@ figure { margin: 0; }
 /* ══════════════════════════════════════════════════════════
    EVOLUÇÃO — rosa, como o post "Entenda a evolução"
    ══════════════════════════════════════════════════════════ */
-.evolucao { background: radial-gradient(45% 60% at 100% 0%, var(--rosa-100), transparent 70%), linear-gradient(180deg, var(--branco) 0%, var(--rosa-50) 100%); }
-.estagios { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; max-width: 760px; margin: 0 auto; }
-.estagio { position: relative; border-radius: var(--raio); background: var(--branco); padding: 10px; display: flex; flex-direction: column; box-shadow: var(--sombra); }
+.evolucao {
+  overflow: hidden; isolation: isolate;
+  background:
+    radial-gradient(38% 55% at 0% 30%, rgba(240, 211, 230, .9), transparent 70%),
+    radial-gradient(35% 50% at 100% 75%, rgba(205, 181, 226, .55), transparent 70%),
+    linear-gradient(180deg, var(--branco) 0%, var(--rosa-50) 100%);
+}
+.evolucao__decor { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
+.evolucao__script { position: absolute; z-index: -1; right: 3%; top: 8%; font-family: var(--script); font-size: clamp(90px, 10vw, 170px); line-height: 1; color: #a1527f; opacity: .1; transform: rotate(-8deg); pointer-events: none; }
+.evolucao__pontos { position: absolute; z-index: -1; left: 4%; bottom: 14%; width: 150px; height: 150px; border-radius: 50%; background: radial-gradient(circle, #a1527f 1.6px, transparent 2.2px) 0 0 / 18px 18px; opacity: .2; pointer-events: none; }
+
+.estagios { --e1: #f3c9de; --e2: #d987b0; --e3: #9c2f68; display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; max-width: 900px; margin: 0 auto; position: relative; }
+/* trilho em degradê ligando os três estágios */
+.estagios::before { content: ""; position: absolute; left: 8%; right: 8%; top: 50%; height: 4px; border-radius: 4px; background: linear-gradient(90deg, var(--e1), var(--e2), var(--e3)); z-index: 0; }
+.estagio { position: relative; z-index: 1; border-radius: 20px; background: var(--branco); padding: 10px; display: flex; flex-direction: column; box-shadow: 0 24px 50px -30px rgba(122, 47, 93, .55); border-top: 4px solid var(--cor); transition: transform .4s var(--ease), box-shadow .4s var(--ease); }
+.estagio:hover { transform: translateY(-6px); box-shadow: 0 34px 60px -30px rgba(122, 47, 93, .7); }
+.estagio:nth-child(1) { --cor: var(--e1); --txt: #8e4a6c; }
+.estagio:nth-child(2) { --cor: var(--e2); --txt: #fff; }
+.estagio:nth-child(3) { --cor: var(--e3); --txt: #fff; }
 .estagio + .estagio::before {
-  content: "›"; position: absolute; left: -24px; top: 50%; z-index: 2;
+  content: "›"; position: absolute; left: -26px; top: 50%; z-index: 2;
   width: 38px; height: 38px; border-radius: 50%; transform: translate(-7px, -50%);
   display: grid; place-items: center;
   background: linear-gradient(135deg, #a1527f, var(--roxo-700)); color: var(--branco);
-  font-size: 22px; line-height: 1; box-shadow: 0 0 0 4px var(--rosa-50);
+  font-size: 22px; line-height: 1; box-shadow: 0 0 0 4px var(--branco), 0 8px 18px -6px rgba(75, 31, 115, .6);
 }
-.estagio__rotulo { display: block; text-align: center; margin-bottom: 10px; padding: 10px 0; border-radius: 10px; background: var(--rosa-200); font-weight: 700; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: #7a2f5d; }
-.estagio img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: var(--raio-sm); }
-.estagio p { margin: 10px 0 0; padding: 14px 10px; border-radius: 10px; background: var(--rosa-100); text-align: center; color: var(--texto); font-size: 14.5px; line-height: 1.4; }
+.estagio__rotulo { display: block; text-align: center; margin-bottom: 8px; padding: 10px 0; border-radius: 12px; background: var(--cor); font-weight: 700; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--txt); }
+.estagio__nivel { display: flex; align-items: center; justify-content: center; gap: 5px; margin-bottom: 10px; font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #8e4a6c; }
+.estagio__nivel i { width: 18px; height: 5px; border-radius: 3px; background: var(--cor); }
+.estagio__nivel i.vazio { background: var(--rosa-200); opacity: .6; }
+.estagio__nivel i:last-of-type { margin-right: 6px; }
+.estagio img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 14px; }
+.estagio p { margin: 10px 0 0; padding: 14px 10px; border-radius: 12px; background: var(--rosa-50); border: 1px solid var(--rosa-200); text-align: center; color: var(--texto); font-size: 14.5px; line-height: 1.4; }
 
 /* aviso "Nós não tratamos varizes": mesma linguagem da arte do Instagram */
 .varizes {
@@ -631,6 +653,9 @@ figure { margin: 0; }
 .passo__num { flex: none; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, var(--roxo-600), var(--roxo-700)); color: var(--dourado-claro); font-family: var(--serif); font-size: 20px; }
 .passo h3 { font-family: var(--serif); font-size: 20px; color: var(--roxo-700); margin-bottom: 4px; }
 .passo p { margin: 0; color: var(--texto-2); font-size: 15px; }
+.funciona__acao { display: flex; align-items: center; flex-wrap: wrap; gap: 14px 20px; margin-top: 24px; }
+.funciona__acao p { position: relative; margin: 0; padding-left: 22px; font-size: 14px; font-weight: 500; color: var(--roxo-700); }
+.funciona__acao p::before { content: "✦"; position: absolute; left: 0; color: var(--dourado); }
 
 /* ══════════════════════════════════════════════════════════
    RESULTADOS — galeria de antes e depois
@@ -842,13 +867,16 @@ figure { margin: 0; }
 @media (max-width: 960px) {
   .funciona__decor, .funciona__script, .funciona__pontos { display: none; }
   /* abas viram pílulas que deslizam para o lado */
+  /* desfoque atrás do menu pesa na rolagem do celular: fundo sólido no lugar */
+  .topo.rolou { backdrop-filter: none; -webkit-backdrop-filter: none; background: rgba(247, 240, 252, .98); }
+  .m-destaques li { backdrop-filter: none; }
   .vitrine { grid-template-columns: 1fr; gap: 18px; }
   /* abas em cima, painel no meio, cartão de destaques por último */
   .vitrine__lado { display: contents; }
   .vitrine__destaque { order: 3; }
   .vitrine__destaque ul { grid-template-columns: 1fr 1fr; gap: 12px 16px; }
-  /* abas em grade 2x2: ícone em cima, nome embaixo, sem rolar */
-  .vitrine__abas { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  /* 3 abas lado a lado: ícone em cima, nome embaixo, sem rolar */
+  .vitrine__abas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
   .aba { grid-template-columns: 1fr; justify-items: center; text-align: center; gap: 6px; padding: 12px 8px; border-radius: 14px; min-height: 64px; }
   .aba__num { display: none; }
   .aba__icone { width: 36px; height: 36px; }
@@ -914,7 +942,12 @@ figure { margin: 0; }
 @media (max-width: 720px) {
   .vitrine__paineis { border-radius: 20px; }
   .painel { grid-template-columns: 1fr; }
-  .painel__foto { min-height: 0; height: 190px; }
+  .painel__foto { min-height: 0; height: 260px; }
+  .painel__foto--vasinhos { height: 300px; }
+  .painel__foto--vasinhos img { object-position: center 55%; }
+  .painel__foto--duo .painel__lado img { object-position: center 40%; }
+  .tipos span { left: 3px; right: 3px; bottom: 3px; padding: 3px 2px; font-size: 8px; letter-spacing: 0; }
+  .tipos small { font-size: 7px; }
   .painel__texto { padding: 20px 18px 22px; }
   .painel h3 { font-size: 24px; margin-bottom: 10px; }
   .painel p, .painel__lista li { font-size: 14.5px; }
@@ -957,7 +990,13 @@ figure { margin: 0; }
   /* estágios: os 3 cabem lado a lado, sem deslizar */
   .estagios { grid-template-columns: repeat(3, 1fr); gap: 8px; }
   .estagio { padding: 5px; border-radius: 12px; }
-  .estagio + .estagio::before { display: none; }
+  .estagio + .estagio::before, .estagios::before { display: none; }
+  .estagio__nivel { font-size: 7.5px; letter-spacing: .04em; gap: 2px; margin-bottom: 5px; }
+  .estagio__nivel i { width: 9px; height: 4px; }
+  .estagio__nivel i:last-of-type { margin-right: 3px; }
+  .estagio { border-top-width: 3px; }
+  .estagio:hover { transform: none; }
+  .evolucao__script, .evolucao__pontos, .evolucao__decor { display: none; }
   .estagio__rotulo { font-size: 9.5px; letter-spacing: .06em; padding: 6px 0; margin-bottom: 5px; border-radius: 7px; }
   .estagio img { aspect-ratio: 3 / 4.4; border-radius: 8px; }
   .estagio p { margin-top: 5px; padding: 8px 4px; font-size: 11.5px; line-height: 1.3; border-radius: 7px; }
@@ -981,7 +1020,7 @@ figure { margin: 0; }
   .faixa-cta .botao { width: 100%; }
 
   /* como funciona: foto pequena de um lado, passos do outro */
-  .funciona__grade { grid-template-columns: 36% 1fr; grid-template-areas: "cab cab" "foto passos"; gap: 16px 14px; align-items: stretch; }
+  .funciona__grade { grid-template-columns: 36% 1fr; grid-template-areas: "cab cab" "foto passos" "acao acao"; gap: 16px 14px; align-items: stretch; }
   .funciona__texto { display: contents; }
   .funciona__texto > header { grid-area: cab; }
   .funciona__foto { grid-area: foto; position: relative; max-width: none; margin: 0; display: flex; }
@@ -997,6 +1036,9 @@ figure { margin: 0; }
   .passo__num { width: 28px; height: 28px; font-size: 14px; }
   .passo h3 { font-size: 15px; margin-bottom: 2px; }
   .passo p { font-size: 12.5px; line-height: 1.45; }
+  .funciona__acao { grid-area: acao; flex-direction: column; gap: 10px; margin-top: 4px; }
+  .funciona__acao .botao { width: 100%; }
+  .funciona__acao p { font-size: 12.5px; }
 
   .painel--largo .painel__texto { padding: 18px 18px 22px; }
   .painel__faixa { height: 170px; }
@@ -1013,7 +1055,6 @@ figure { margin: 0; }
   .diferenciais li { padding: 10px 12px; font-size: 12px; }
   .diferenciais strong { font-size: 14.5px; }
   .tipos { gap: 6px; margin-bottom: 14px; }
-  .tipos span { font-size: 9.5px; }
   .painel .aviso { font-size: 13px; margin-bottom: 18px; }
 
   .galeria__grade { grid-template-columns: 1fr 1fr; gap: 10px; }

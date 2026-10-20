@@ -110,7 +110,8 @@
      Mola com velocidade e amortecimento.
      ══════════════════════════════════════════════════════ */
   FX.j14 = function (raiz) {
-    if (semMovimento) return;
+    /* sem mouse não há o que animar: poupa o celular de um laço por botão */
+    if (semMovimento || toque) return;
     raiz.querySelectorAll('.js-elastico').forEach(function (btn) {
       var escala = 1, vel = 0, alvo = 1;
       btn.addEventListener('pointerenter', function (e) { if (e.pointerType === 'mouse') alvo = 1.08; });
@@ -299,6 +300,15 @@
     trilho.style.setProperty('--duracao', (trilho.children.length / 2) * 7 + 's');
   }
 
+  /* ── pausa as animações contínuas que estão fora da tela ── */
+  function pausarForaDaTela() {
+    if (!('IntersectionObserver' in window)) return;
+    var obs = new IntersectionObserver(function (itens) {
+      itens.forEach(function (it) { it.target.classList.toggle('fora-da-tela', !it.isIntersecting); });
+    }, { rootMargin: '100px 0px' });
+    document.querySelectorAll('.esteira, .depos-esteira').forEach(function (el) { obs.observe(el); });
+  }
+
   /* ── galeria de antes e depois: ver mais e foto ampliada ── */
   function galeria() {
     var raiz = document.querySelector('.galeria');
@@ -326,7 +336,8 @@
       var lista = visiveis();
       atual = (i + lista.length) % lista.length;
       var img = lista[atual].querySelector('img');
-      foto.src = img.src; foto.alt = img.alt;
+      /* a grade usa miniaturas; a versão grande só carrega ao ampliar */
+      foto.src = img.dataset.full || img.src; foto.alt = img.alt;
       if (!lupa.open) lupa.showModal();
     }
     itens.forEach(function (li) {
@@ -434,6 +445,7 @@
   esteira();
   vitrine();
   avaliacoes();
+  pausarForaDaTela();
   galeria();
   FX.j12(document.querySelector('.depos') || document);
   revelar();
