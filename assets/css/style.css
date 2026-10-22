@@ -541,9 +541,10 @@ figure { margin: 0; }
 .evolucao {
   overflow: hidden; isolation: isolate;
   background:
-    radial-gradient(38% 55% at 0% 30%, rgba(240, 211, 230, .9), transparent 70%),
-    radial-gradient(35% 50% at 100% 75%, rgba(205, 181, 226, .55), transparent 70%),
-    linear-gradient(180deg, var(--branco) 0%, var(--rosa-50) 100%);
+    radial-gradient(45% 55% at 0% 30%, rgba(236, 190, 218, .9), transparent 70%),
+    radial-gradient(45% 55% at 100% 70%, rgba(196, 160, 226, .6), transparent 70%),
+    radial-gradient(60% 40% at 50% 55%, rgba(243, 201, 222, .55), transparent 75%),
+    linear-gradient(180deg, var(--rosa-50) 0%, var(--rosa-100) 100%);
 }
 .evolucao__decor { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
 .evolucao__script { position: absolute; z-index: -1; right: 3%; top: 8%; font-family: var(--script); font-size: clamp(90px, 10vw, 170px); line-height: 1; color: #a1527f; opacity: .1; transform: rotate(-8deg); pointer-events: none; }
@@ -552,25 +553,61 @@ figure { margin: 0; }
 .estagios { --e1: #f3c9de; --e2: #d987b0; --e3: #9c2f68; display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; max-width: 900px; margin: 0 auto; position: relative; }
 /* trilho em degradê ligando os três estágios */
 .estagios::before { content: ""; position: absolute; left: 8%; right: 8%; top: 50%; height: 4px; border-radius: 4px; background: linear-gradient(90deg, var(--e1), var(--e2), var(--e3)); z-index: 0; }
-.estagio { position: relative; z-index: 1; border-radius: 20px; background: var(--branco); padding: 10px; display: flex; flex-direction: column; box-shadow: 0 24px 50px -30px rgba(122, 47, 93, .55); border-top: 4px solid var(--cor); transition: transform .4s var(--ease), box-shadow .4s var(--ease); }
-.estagio:hover { transform: translateY(-6px); box-shadow: 0 34px 60px -30px rgba(122, 47, 93, .7); }
+.estagio {
+  position: relative; z-index: 1; border-radius: 22px; padding: 12px; display: flex; flex-direction: column;
+  /* moldura em degradê: dourado em cima, cor do estágio embaixo */
+  border: 1.5px solid transparent;
+  /* fundo tingido com a cor do estágio: mais clarinho em cima, mais forte embaixo */
+  background:
+    radial-gradient(120% 60% at 50% 0%, rgba(255, 255, 255, .85), transparent 70%) padding-box,
+    linear-gradient(180deg, color-mix(in srgb, var(--cor) 22%, #fff) 0%, color-mix(in srgb, var(--cor) 48%, #fff) 100%) padding-box,
+    linear-gradient(160deg, rgba(220, 191, 141, .95), color-mix(in srgb, var(--cor) 50%, #fff) 45%, var(--cor)) border-box;
+  box-shadow: 0 28px 56px -30px color-mix(in srgb, var(--cor) 80%, #2a1140);
+  transition: transform .4s var(--ease), box-shadow .4s var(--ease);
+}
+.estagio:hover { transform: translateY(-8px); box-shadow: 0 40px 70px -32px rgba(122, 47, 93, .75); }
 .estagio:nth-child(1) { --cor: var(--e1); --txt: #8e4a6c; }
 .estagio:nth-child(2) { --cor: var(--e2); --txt: #fff; }
 .estagio:nth-child(3) { --cor: var(--e3); --txt: #fff; }
 .estagio + .estagio::before {
-  content: "›"; position: absolute; left: -26px; top: 50%; z-index: 2;
-  width: 38px; height: 38px; border-radius: 50%; transform: translate(-7px, -50%);
-  display: grid; place-items: center;
-  background: linear-gradient(135deg, #a1527f, var(--roxo-700)); color: var(--branco);
-  font-size: 22px; line-height: 1; box-shadow: 0 0 0 4px var(--branco), 0 8px 18px -6px rgba(75, 31, 115, .6);
+  content: "›"; position: absolute; left: -26px; top: 52%; z-index: 2;
+  width: 40px; height: 40px; border-radius: 50%; transform: translate(-7px, -50%);
+  display: grid; place-items: center; padding-bottom: 2px;
+  background: linear-gradient(135deg, #a1527f, var(--roxo-700)); color: var(--dourado-claro);
+  font-size: 22px; line-height: 1;
+  box-shadow: 0 0 0 4px var(--branco), 0 0 0 5px rgba(220, 191, 141, .7), 0 10px 20px -6px rgba(75, 31, 115, .6);
 }
-.estagio__rotulo { display: block; text-align: center; margin-bottom: 8px; padding: 10px 0; border-radius: 12px; background: var(--cor); font-weight: 700; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--txt); }
-.estagio__nivel { display: flex; align-items: center; justify-content: center; gap: 5px; margin-bottom: 10px; font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #8e4a6c; }
+.estagio__rotulo {
+  position: relative; overflow: hidden; display: block; text-align: center; margin-bottom: 10px; padding: 11px 0;
+  border-radius: 14px; background: linear-gradient(135deg, color-mix(in srgb, var(--cor) 72%, #fff), var(--cor));
+  box-shadow: 0 8px 18px -12px var(--cor), inset 0 1px 0 rgba(255, 255, 255, .45);
+  font-weight: 700; font-size: 13px; letter-spacing: .18em; text-transform: uppercase; color: var(--txt);
+}
+/* brilho que atravessa o rótulo ao passar o mouse */
+.estagio__rotulo::after { content: ""; position: absolute; top: 0; bottom: 0; left: -60%; width: 40%; background: linear-gradient(100deg, transparent, rgba(255, 255, 255, .5), transparent); transform: skewX(-20deg); transition: left .8s var(--ease); }
+.estagio:hover .estagio__rotulo::after { left: 130%; }
+.estagio__nivel { display: flex; align-items: center; justify-content: center; gap: 5px; margin-bottom: 12px; font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #8e4a6c; }
 .estagio__nivel i { width: 18px; height: 5px; border-radius: 3px; background: var(--cor); }
-.estagio__nivel i.vazio { background: var(--rosa-200); opacity: .6; }
+.estagio__nivel i.vazio { background: rgba(255, 255, 255, .8); }
 .estagio__nivel i:last-of-type { margin-right: 6px; }
-.estagio img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 14px; }
-.estagio p { margin: 10px 0 0; padding: 14px 10px; border-radius: 12px; background: var(--rosa-50); border: 1px solid var(--rosa-200); text-align: center; color: var(--texto); font-size: 14.5px; line-height: 1.4; }
+.estagio__foto { position: relative; margin: 0; border-radius: 16px; overflow: hidden; }
+.estagio__foto img { display: block; width: 100%; aspect-ratio: 3 / 4; object-fit: cover; transition: transform .8s var(--ease); }
+.estagio:hover .estagio__foto img { transform: scale(1.05); }
+/* véu suave e número grande do estágio sobre a foto */
+.estagio__foto::before { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(180deg, transparent 55%, rgba(42, 17, 64, .55) 100%); }
+.estagio__foto::after {
+  content: attr(data-n); position: absolute; z-index: 2; left: 14px; bottom: 6px;
+  font-family: var(--serif); font-style: italic; font-size: 54px; line-height: 1; color: var(--dourado-claro);
+  text-shadow: 0 4px 14px rgba(42, 17, 64, .5); pointer-events: none;
+}
+.estagio p {
+  position: relative; margin: 14px 0 0; padding: 16px 12px 12px; text-align: center; border-radius: 14px;
+  background: rgba(255, 255, 255, .7); box-shadow: 0 8px 18px -14px color-mix(in srgb, var(--cor) 90%, #2a1140);
+  font-family: var(--serif); font-size: 16px; line-height: 1.4; color: color-mix(in srgb, var(--cor) 35%, #2a1140);
+}
+/* filete dourado com losango separando foto e legenda */
+.estagio p::before { content: ""; position: absolute; top: 0; left: 50%; width: 70px; height: 1px; transform: translateX(-50%); background: linear-gradient(90deg, transparent, var(--dourado-claro), transparent); }
+.estagio p::after { content: ""; position: absolute; top: -3px; left: 50%; width: 7px; height: 7px; transform: translateX(-50%) rotate(45deg); background: var(--cor); box-shadow: 0 0 0 2px #fff; }
 
 /* aviso "Nós não tratamos varizes": mesma linguagem da arte do Instagram */
 .varizes {
@@ -619,18 +656,43 @@ figure { margin: 0; }
 .varizes__medico b { color: #b0124f; }
 
 .faixa-cta {
+  position: relative; isolation: isolate; overflow: hidden;
   margin-top: clamp(40px, 6vw, 64px);
   display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 28px;
-  padding: 28px 36px;
-  border-radius: var(--raio);
-  background: linear-gradient(135deg, var(--roxo-600), var(--roxo-800));
+  padding: 34px 40px;
+  border-radius: 26px;
+  background:
+    radial-gradient(60% 140% at 0% 0%, rgba(161, 82, 127, .55), transparent 60%),
+    radial-gradient(40% 120% at 100% 100%, rgba(220, 191, 141, .28), transparent 65%),
+    linear-gradient(120deg, var(--roxo-600) 0%, var(--roxo-700) 45%, var(--roxo-900) 100%);
   color: var(--branco);
-  box-shadow: var(--sombra);
+  box-shadow: 0 34px 70px -34px rgba(42, 17, 64, .85), 0 0 0 1px rgba(220, 191, 141, .35);
 }
-.faixa-cta__script { font-family: var(--script); font-size: 42px; line-height: 1; color: var(--dourado-claro); margin: 0; }
-.faixa-cta__txt { margin: 0; color: rgba(255, 255, 255, .85); padding-left: 28px; border-left: 1px solid rgba(255, 255, 255, .2); }
-.faixa-cta .botao--roxo { background: linear-gradient(135deg, #e8cd98, #b38a52); color: var(--roxo-900); }
+/* moldura interna dourada */
+.faixa-cta::before { content: ""; position: absolute; inset: 9px; z-index: -1; border-radius: 19px; border: 1px solid rgba(220, 191, 141, .35); pointer-events: none; }
+/* textura de pontinhos no canto */
+.faixa-cta::after {
+  content: ""; position: absolute; z-index: -1; right: -30px; top: -40px; width: 240px; height: 240px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(220, 191, 141, .55) 1.4px, transparent 2px) 0 0 / 16px 16px;
+  -webkit-mask: radial-gradient(circle, #000 20%, transparent 70%); mask: radial-gradient(circle, #000 20%, transparent 70%);
+  opacity: .5; pointer-events: none;
+}
+.faixa-cta__script { font-family: var(--script); font-size: 48px; line-height: 1; margin: 0; color: var(--dourado-claro); filter: drop-shadow(0 4px 12px rgba(0, 0, 0, .25)); }
+/* dourado em degradê no span mais interno (a cortina embrulha o texto em outro span) */
+html:not(.js) .faixa-cta__script .js-cortina, .js .faixa-cta__script .js-cortina__txt {
+  padding: 4px 4px 8px;
+  background: linear-gradient(180deg, #f6e3bd 0%, var(--dourado-claro) 55%, #b38a52 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.faixa-cta__txt { position: relative; margin: 0; color: rgba(255, 255, 255, .88); padding-left: 30px; font-size: 16.5px; line-height: 1.55; }
+/* divisória dourada com losango */
+.faixa-cta__txt::before { content: ""; position: absolute; left: 0; top: -6px; bottom: -6px; width: 1px; background: linear-gradient(180deg, transparent, var(--dourado-claro), transparent); }
+.faixa-cta__txt::after { content: ""; position: absolute; left: -3px; top: 50%; width: 7px; height: 7px; transform: translateY(-50%) rotate(45deg); background: var(--dourado-claro); }
+.faixa-cta .botao--roxo { position: relative; overflow: hidden; background: linear-gradient(135deg, #f1dcaf, #c9a46a 55%, #a97f45); color: var(--roxo-900); box-shadow: 0 14px 30px -12px rgba(201, 164, 106, .8), inset 0 1px 0 rgba(255, 255, 255, .6); }
 .faixa-cta .botao--roxo .botao__seta { border-color: var(--roxo-900); color: var(--roxo-900); }
+/* reflexo passando pelo botão */
+.faixa-cta .botao--roxo::after { content: ""; position: absolute; top: 0; bottom: 0; left: -50%; width: 35%; background: linear-gradient(100deg, transparent, rgba(255, 255, 255, .65), transparent); transform: skewX(-20deg); animation: faixa-brilho 4.5s var(--ease) infinite; pointer-events: none; }
+@keyframes faixa-brilho { 0%, 55% { left: -50%; } 100% { left: 140%; } }
 
 /* ══════════════════════════════════════════════════════════
    COMO FUNCIONA
@@ -929,7 +991,9 @@ figure { margin: 0; }
   .quem__selo { right: 12px; }
   .faq { grid-template-columns: 1fr; }
   .faixa-cta { grid-template-columns: 1fr; text-align: center; justify-items: center; gap: 14px; }
-  .faixa-cta__txt { border-left: 0; padding-left: 0; }
+  .faixa-cta__txt { padding-left: 0; padding-top: 16px; }
+  .faixa-cta__txt::before { left: 50%; top: 0; bottom: auto; width: 80px; height: 1px; transform: translateX(-50%); background: linear-gradient(90deg, transparent, var(--dourado-claro), transparent); }
+  .faixa-cta__txt::after { left: 50%; top: -3px; transform: translateX(-50%) rotate(45deg); }
   .cta-final__grade { grid-template-columns: 1fr; text-align: center; justify-items: center; }
   .cta-final__conteudo { margin: 0 auto; }
   .cta-final__foto { justify-self: center; max-width: 260px; }
@@ -989,17 +1053,20 @@ figure { margin: 0; }
 
   /* estágios: os 3 cabem lado a lado, sem deslizar */
   .estagios { grid-template-columns: repeat(3, 1fr); gap: 8px; }
-  .estagio { padding: 5px; border-radius: 12px; }
+  .estagio { padding: 5px; border-radius: 12px; border-width: 1px; }
   .estagio + .estagio::before, .estagios::before { display: none; }
   .estagio__nivel { font-size: 7.5px; letter-spacing: .04em; gap: 2px; margin-bottom: 5px; }
   .estagio__nivel i { width: 9px; height: 4px; }
   .estagio__nivel i:last-of-type { margin-right: 3px; }
-  .estagio { border-top-width: 3px; }
   .estagio:hover { transform: none; }
   .evolucao__script, .evolucao__pontos, .evolucao__decor { display: none; }
   .estagio__rotulo { font-size: 9.5px; letter-spacing: .06em; padding: 6px 0; margin-bottom: 5px; border-radius: 7px; }
-  .estagio img { aspect-ratio: 3 / 4.4; border-radius: 8px; }
-  .estagio p { margin-top: 5px; padding: 8px 4px; font-size: 11.5px; line-height: 1.3; border-radius: 7px; }
+  .estagio__foto { border-radius: 8px; }
+  .estagio__foto img { aspect-ratio: 3 / 4.4; }
+  .estagio__foto::after { font-size: 26px; left: 7px; bottom: 3px; }
+  .estagio p { margin-top: 6px; padding: 10px 3px 6px; font-size: 11.5px; line-height: 1.3; border-radius: 8px; }
+  .estagio p::before { width: 40px; }
+  .estagio p::after { width: 5px; height: 5px; top: -2px; }
 
   .varizes { grid-template-columns: 1fr; margin-top: 28px; border-radius: 18px; }
   .varizes__foto { min-height: 0; height: 210px; }
@@ -1015,8 +1082,10 @@ figure { margin: 0; }
   .varizes__lista li::before { top: 7px; width: 20px; height: 20px; font-size: 14px; }
   .varizes__medico { font-size: 14px; gap: 12px; padding: 12px 14px; text-align: left; }
   .varizes__medico svg { width: 26px; height: 26px; padding-right: 10px; }
-  .faixa-cta { padding: 22px 18px; margin-top: 28px; }
-  .faixa-cta__script { font-size: 32px; }
+  .faixa-cta { padding: 26px 20px; margin-top: 28px; border-radius: 20px; }
+  .faixa-cta::before { inset: 7px; border-radius: 14px; }
+  .faixa-cta__script { font-size: 36px; }
+  .faixa-cta__txt { font-size: 15px; }
   .faixa-cta .botao { width: 100%; }
 
   /* como funciona: foto pequena de um lado, passos do outro */
