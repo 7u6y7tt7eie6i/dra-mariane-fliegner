@@ -1093,7 +1093,7 @@ html:not(.js) .faixa-cta__script .js-cortina, .js .faixa-cta__script .js-cortina
   .funciona__texto { display: contents; }
   .funciona__texto > header { grid-area: cab; }
   .funciona__foto { grid-area: foto; position: relative; max-width: none; margin: 0; display: flex; }
-  .funciona__foto img { height: 100%; aspect-ratio: auto; object-position: center 12%; border-width: 3px; border-radius: 80px 80px 12px 12px; }
+  .funciona__foto img { height: 100%; aspect-ratio: auto; object-position: 40% 45%; border-width: 3px; border-radius: 80px 80px 12px 12px; }
   .funciona__foto::before { inset: 8px -6px -8px 6px; border-radius: 80px 80px 12px 12px; }
   .passos { grid-area: passos; }
   .funciona .sobretitulo { font-size: 10px; letter-spacing: .2em; margin-bottom: 8px; }
