@@ -1092,8 +1092,9 @@ html:not(.js) .faixa-cta__script .js-cortina, .js .faixa-cta__script .js-cortina
   .funciona__grade { grid-template-columns: 36% 1fr; grid-template-areas: "cab cab" "foto passos" "acao acao"; gap: 16px 14px; align-items: stretch; }
   .funciona__texto { display: contents; }
   .funciona__texto > header { grid-area: cab; }
-  .funciona__foto { grid-area: foto; position: relative; max-width: none; margin: 0; display: flex; }
-  .funciona__foto img { height: 100%; aspect-ratio: auto; object-position: 40% 45%; border-width: 3px; border-radius: 80px 80px 12px 12px; }
+  .funciona { overflow: clip; }
+  .funciona__foto { grid-area: foto; position: sticky; top: 96px; align-self: start; max-width: none; margin: 0; }
+  .funciona__foto img { height: auto; aspect-ratio: 9 / 16; object-position: 38% center; border-width: 3px; border-radius: 80px 80px 12px 12px; }
   .funciona__foto::before { inset: 8px -6px -8px 6px; border-radius: 80px 80px 12px 12px; }
   .passos { grid-area: passos; }
   .funciona .sobretitulo { font-size: 10px; letter-spacing: .2em; margin-bottom: 8px; }
