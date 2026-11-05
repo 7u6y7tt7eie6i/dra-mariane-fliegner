@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://clinicadramarianefliegner.app.br/sitemap.xml
+Sitemap: https://www.clinicadramarianefliegner.app.br/sitemap.xml
