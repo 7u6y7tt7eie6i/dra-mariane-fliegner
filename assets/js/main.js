@@ -434,7 +434,35 @@
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') alternar(false); });
   }
 
+  /* ── links internos sem "#secao" no endereço ─────────── */
+  function linksLimpos() {
+    var limpar = function () {
+      if (!location.hash) return;
+      try {
+        history.replaceState(null, '', location.pathname.replace(/index\.html$/, '') + location.search);
+      } catch (e) { /* file:// pode recusar: só deixa o endereço como está */ }
+    };
+
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href^="#"]');
+      if (!a || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      var id = a.getAttribute('href').slice(1);
+      var alvo = id ? document.getElementById(id) : null;
+      if (!alvo) return;
+      e.preventDefault();
+      /* respeita o scroll-behavior e o scroll-padding do CSS */
+      alvo.scrollIntoView();
+      limpar();
+    });
+
+    /* chegou de outra página já com "#secao": o navegador rola e depois limpamos */
+    if (location.hash) {
+      window.addEventListener('load', function () { setTimeout(limpar, 50); });
+    }
+  }
+
   /* ── ligar tudo ──────────────────────────────────────── */
+  linksLimpos();
   cabecalho();
   FX.j16(document);
   FX.j17(document);
