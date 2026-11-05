@@ -176,13 +176,8 @@ figure { margin: 0; }
 .topo.rolou .topo__linha { height: 68px; }
 
 .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; }
-.logo__mono {
-  display: grid; place-items: center;
-  width: 48px; height: 48px;
-  color: var(--dourado);
-  flex: none;
-}
-.logo__mono svg { width: 100%; height: 100%; overflow: visible; }
+/* símbolo recortado da logo oficial (assets/img/logo-simbolo.png) */
+.logo__mono { display: block; width: auto; height: 54px; flex: none; }
 /* texto no estilo da logo oficial: nome dourado em caixa alta, filete e subtítulo lilás condensado */
 .logo__texto { display: flex; flex-direction: column; line-height: 1.15; }
 .logo__texto strong {
@@ -193,7 +188,6 @@ figure { margin: 0; }
   font-family: "Oswald", var(--sans); font-weight: 500; font-size: 10.5px; letter-spacing: .24em; text-transform: uppercase;
   color: #9a4aa8; margin-top: 4px;
 }
-.logo--claro .logo__mono { color: var(--dourado-claro); border-color: var(--dourado-claro); }
 .logo--claro .logo__texto strong { color: var(--dourado-claro); }
 .logo--claro .logo__texto small { color: #c97fd2; }
 
@@ -1000,7 +994,6 @@ html:not(.js) .faixa-cta__script .js-cortina, .js .faixa-cta__script .js-cortina
   .menu-aberto .menu a:nth-child(8) { transition-delay: .28s; }
   /* backdrop-filter prenderia o menu fixo dentro do cabeçalho */
   .menu-aberto .topo { color: var(--branco); backdrop-filter: none; background: transparent; box-shadow: none; }
-  .menu-aberto .topo .logo__mono { color: var(--dourado-claro); border-color: var(--dourado-claro); }
   .menu-aberto .topo .logo__texto strong { color: var(--dourado-claro); }
   .menu-aberto .topo .logo__texto small { color: #c97fd2; }
   .menu-aberto .topo .logo { position: relative; z-index: 60; }
@@ -1044,7 +1037,7 @@ html:not(.js) .faixa-cta__script .js-cortina, .js .faixa-cta__script .js-cortina
   body { font-size: 15px; }
 
   .topo__linha { height: 70px; }
-  .logo__mono { width: 40px; height: 40px; }
+  .logo__mono { height: 46px; }
   .logo__texto strong { font-size: 13px; letter-spacing: .07em; }
   .logo__texto small { font-size: 9px; letter-spacing: .17em; }
 
